@@ -1,7 +1,7 @@
 import type { JWT } from 'next-auth'
 
 import { ACCESS_TOKEN_EXPIRES_MILLISECONDS } from '@/constants/auth/accessTokenExpiresMilliseconds'
-import { apiPostgres } from '@/instances/api/apiPostgres'
+import { apiPostgres } from '@/instances/api'
 
 export async function refreshAccessToken(token: JWT) {
   try {
