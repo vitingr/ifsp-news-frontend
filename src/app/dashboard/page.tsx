@@ -1,30 +1,20 @@
-import type { NextPage } from 'next'
-
 import { AppSidebar } from '@/components/app-sidebar'
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbList
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
+import { Separator } from '@/components/ui/separator'
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger
 } from '@/components/ui/sidebar'
-import { getMetaData } from '@/utils/seo/getMetaData'
-import { Separator } from '@radix-ui/react-separator'
 
-export async function generateMetadata() {
-  return getMetaData({
-    title: 'Admin',
-    description: '',
-    image: '',
-    url: '/admin'
-  })
-}
-
-const Page: NextPage = async () => {
+export default function Page() {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -39,12 +29,14 @@ const Page: NextPage = async () => {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">Admin</BreadcrumbLink>
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
-                {/* <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
                   <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem> */}
+                </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
@@ -61,5 +53,3 @@ const Page: NextPage = async () => {
     </SidebarProvider>
   )
 }
-
-export default Page
