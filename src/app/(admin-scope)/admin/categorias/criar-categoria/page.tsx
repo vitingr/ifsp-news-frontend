@@ -4,15 +4,15 @@ import { getMetaData } from '@/utils/seo/getMetaData'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Admin',
+    title: 'Criar artigo',
     description: '',
     image: '',
-    url: '/admin'
+    url: '/categorias/criar-categoria'
   })
 }
 
 const Page: NextPage = async () => {
-  return <main>testando</main>
+  return <main></main>
 }
 
 export default Page

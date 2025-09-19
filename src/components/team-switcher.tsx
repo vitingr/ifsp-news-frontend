@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronsUpDown, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import * as React from 'react'
 
 import {
@@ -9,8 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger
+  DropdownMenuShortcut
 } from '@/components/ui/dropdown-menu'
 import {
   SidebarMenu,
@@ -39,21 +38,18 @@ export function TeamSwitcher({
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-              size="lg"
-            >
-              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                <activeTeam.logo className="size-4" />
-              </div>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{activeTeam.name}</span>
-                <span className="truncate text-xs">{activeTeam.plan}</span>
-              </div>
-              <ChevronsUpDown className="ml-auto" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
+          <SidebarMenuButton
+            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            size="lg"
+          >
+            <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+              <activeTeam.logo className="size-4" />
+            </div>
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-medium">{activeTeam.name}</span>
+              <span className="truncate text-xs">{activeTeam.plan}</span>
+            </div>
+          </SidebarMenuButton>
           <DropdownMenuContent
             align="start"
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"

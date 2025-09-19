@@ -7,7 +7,7 @@ export async function generateMetadata() {
     title: 'Criar artigo',
     description: '',
     image: '',
-    url: '/criar-artigo'
+    url: '/categorias'
   })
 }
 

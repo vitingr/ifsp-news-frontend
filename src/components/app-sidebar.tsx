@@ -2,8 +2,6 @@
 
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -25,7 +23,6 @@ import {
   SidebarRail
 } from '@/components/ui/sidebar'
 
-// This is sample data.
 const data = {
   user: {
     name: 'shadcn',
@@ -51,64 +48,22 @@ const data = {
   ],
   navMain: [
     {
-      title: 'Playground',
+      title: 'Admin',
       url: '#',
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: 'History',
-          url: '#'
+          title: 'Artigos',
+          url: '/artigos'
         },
         {
-          title: 'Starred',
-          url: '#'
+          title: 'Categorias',
+          url: '/categorias'
         },
         {
-          title: 'Settings',
-          url: '#'
-        }
-      ]
-    },
-    {
-      title: 'Models',
-      url: '#',
-      icon: Bot,
-      items: [
-        {
-          title: 'Genesis',
-          url: '#'
-        },
-        {
-          title: 'Explorer',
-          url: '#'
-        },
-        {
-          title: 'Quantum',
-          url: '#'
-        }
-      ]
-    },
-    {
-      title: 'Documentation',
-      url: '#',
-      icon: BookOpen,
-      items: [
-        {
-          title: 'Introduction',
-          url: '#'
-        },
-        {
-          title: 'Get Started',
-          url: '#'
-        },
-        {
-          title: 'Tutorials',
-          url: '#'
-        },
-        {
-          title: 'Changelog',
-          url: '#'
+          title: 'Autores',
+          url: '/autores'
         }
       ]
     },
