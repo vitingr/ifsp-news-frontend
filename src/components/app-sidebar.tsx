@@ -55,15 +55,15 @@ const data = {
       items: [
         {
           title: 'Artigos',
-          url: '/artigos'
+          url: '/admin/artigos'
         },
         {
           title: 'Categorias',
-          url: '/categorias'
+          url: '/admin/categorias'
         },
         {
           title: 'Autores',
-          url: '/autores'
+          url: '/admin/autores'
         }
       ]
     },

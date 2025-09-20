@@ -2,6 +2,9 @@ import type { NextPage } from 'next'
 
 import { getMetaData } from '@/utils/seo/getMetaData'
 
+import { CreateArticleForm } from './components/Form'
+import { supabase } from '@/instances/supabase'
+
 export async function generateMetadata() {
   return getMetaData({
     title: 'Criar artigo',
@@ -12,7 +15,13 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage = async () => {
-  return <main></main>
+  const { data } = await supabase.categories.getAllCategories({})
+
+  return (
+    <main>
+      <CreateArticleForm availableCategories={data} />
+    </main>
+  )
 }
 
 export default Page

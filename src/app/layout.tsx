@@ -1,5 +1,6 @@
 import { getServerSession } from 'next-auth'
 
+import { AuthModal } from '@/components/common/AuthModal'
 import NextAuthProvider from '@/context/NextAuthProvider'
 import { authOptions } from '@/lib/auth'
 
@@ -15,7 +16,10 @@ export default async function RootLayout({
   return (
     <html lang="pt">
       <body>
-        <NextAuthProvider session={session}>{children}</NextAuthProvider>
+        <NextAuthProvider session={session}>
+          {children}
+          <AuthModal />
+        </NextAuthProvider>
       </body>
     </html>
   )

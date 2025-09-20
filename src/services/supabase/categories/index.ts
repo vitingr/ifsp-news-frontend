@@ -4,7 +4,6 @@ import type {
   CreateCategoryPayload,
   DeleteCategoryPayload,
   GetAllCategoriesPayload,
-  GetAllCategoriesResponse,
   GetCategoryBySlugPayload,
   GetCategoryBySlugResponse
 } from './types'
@@ -19,7 +18,7 @@ export class Categories {
     )
 
     try {
-      return await apiPostgres.get<GetAllCategoriesResponse>('/categories', {
+      return await apiPostgres.get('/categories', {
         params: {
           ...pagination,
           ...filteredPayload
@@ -46,6 +45,7 @@ export class Categories {
 
   createCategory = async ({ payload, token }: CreateCategoryPayload) => {
     try {
+      console.log(payload)
       return await apiPostgres.post('/categories', payload, {
         headers: {
           Authorization: `Bearer ${token}`

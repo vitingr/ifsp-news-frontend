@@ -2,6 +2,8 @@ import type { NextPage } from 'next'
 
 import { getMetaData } from '@/utils/seo/getMetaData'
 
+import { CreateCategoryForm } from './components/Form'
+
 export async function generateMetadata() {
   return getMetaData({
     title: 'Criar artigo',
@@ -12,7 +14,11 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage = async () => {
-  return <main></main>
+  return (
+    <main>
+      <CreateCategoryForm />
+    </main>
+  )
 }
 
 export default Page

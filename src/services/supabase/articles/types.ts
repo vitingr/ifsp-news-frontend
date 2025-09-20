@@ -1,8 +1,5 @@
 import type { Article } from '@/types/models/article'
-import type {
-  PaginationData,
-  PaginationParams
-} from '@/types/services/paginationData'
+import type { PaginationParams } from '@/types/services/paginationData'
 
 export interface GetAllArticlesPayload {
   pagination?: PaginationParams
@@ -27,10 +24,10 @@ export interface DeleteArticlePayload {
   token: string
 }
 
-export interface GetAllArticlesResponse extends PaginationData {
+export interface GetAllArticlesResponse {
   articles: Article[]
 }
 
-export interface GetArticleBySlugResponse extends PaginationData {
+export interface GetArticleBySlugResponse {
   article: Article
 }

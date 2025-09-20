@@ -18,7 +18,7 @@ export class Articles {
     )
 
     try {
-      return await apiPostgres.get<GetAllArticlesPayload>('/articles', {
+      return await apiPostgres.get('/articles', {
         params: {
           ...pagination,
           ...filteredPayload

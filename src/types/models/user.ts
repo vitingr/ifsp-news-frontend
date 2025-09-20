@@ -1,6 +1,8 @@
 import type { Article } from './article'
 import type { Profile } from './profile'
 
+export type UserRole = 'student' | 'admin' | 'super_admin'
+
 export interface User {
   articles?: Article[]
   createdAt: string
@@ -9,6 +11,7 @@ export interface User {
   googleId?: string
   id: string
   profile?: Profile
+  role: UserRole
   token?: string
   updatedAt: String
 }
