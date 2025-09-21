@@ -19,8 +19,8 @@ const AdminLayout: FC<PropsWithChildren> = async ({ children }) => {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-1 px-4">
+        <header className="mx-auto flex h-16 w-full max-w-2xl shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 lg:max-w-7xl">
+          <div className="flex items-center gap-1 px-4 2xl:pr-4 2xl:pl-0">
             <SidebarTrigger className="-ml-1" />
             <Separator
               className="mr-2 data-[orientation=vertical]:h-4"

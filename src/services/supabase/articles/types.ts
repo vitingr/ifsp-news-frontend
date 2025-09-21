@@ -15,6 +15,19 @@ export interface CreateArticlePayload {
     title: string
     slug: string
     description?: string
+    isFeatured: boolean
+    content: string
+  }
+  token: string
+}
+
+export interface UpdateArticlePayload {
+  payload: {
+    title: string
+    slug: string
+    description?: string
+    isFeatured: boolean
+    content: string
   }
   token: string
 }

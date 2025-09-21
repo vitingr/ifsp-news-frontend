@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth'
 
 import { AuthModal } from '@/components/common/AuthModal'
+import { Toaster } from '@/components/ui/sonner'
 import NextAuthProvider from '@/context/NextAuthProvider'
 import { authOptions } from '@/lib/auth'
 
@@ -19,6 +20,7 @@ export default async function RootLayout({
         <NextAuthProvider session={session}>
           {children}
           <AuthModal />
+          <Toaster />
         </NextAuthProvider>
       </body>
     </html>

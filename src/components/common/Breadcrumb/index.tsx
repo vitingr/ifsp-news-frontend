@@ -23,8 +23,8 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
       {...props}
       title={items.map(item => item.name).join(' > ')}
     >
-      <Link className="rounded-sm p-0.5" href="/me">
-        <IoHomeOutline className="text-neutral-600" />
+      <Link className="rounded-sm p-0.5" href="/">
+        <IoHomeOutline className="!text-neutral-600" />
       </Link>
       {items.map((item, index) => (
         <Fragment key={`${item.name}-${index}`}>
@@ -33,7 +33,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
             item.href && !disableAnchor ? Link : 'p',
             {
               href: item.href || '/',
-              className: `w-fit ${disableLineWrap ? 'flex-1' : ''} font-light text-neutral-600 overflow-hidden text-ellipsis whitespace-nowrap text-sm ${item.href ? 'hover:underline' : ''}`
+              className: `w-fit ${disableLineWrap ? 'flex-1' : ''} font-light !text-neutral-600 overflow-hidden text-ellipsis whitespace-nowrap text-sm ${item.href ? 'hover:underline' : ''}`
             },
             item.name
           )}

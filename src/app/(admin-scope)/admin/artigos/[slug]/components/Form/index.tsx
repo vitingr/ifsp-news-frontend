@@ -14,21 +14,24 @@ import { Spin } from '@/components/toolkit/Spin'
 import { useUserSession } from '@/hooks/useUserSession'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import type { CreateArticleInputs } from './schemas'
-import { createArticleSchema } from './schemas'
+import type { EditArticleInputs } from './schemas'
+import { editArticleSchema } from './schemas'
 import { TextEditor } from './TextEditor'
-import type { CreateArticleFormProps } from './types'
+import type { EditArticleFormProps } from './types'
 
-export const CreateArticleForm: FC<CreateArticleFormProps> = ({
-  availableCategories
+export const EditArticleForm: FC<EditArticleFormProps> = ({
+  availableCategories,
+  article
 }) => {
   const user = useUserSession()
 
-  const [content, setContent] = useState<string>('')
-  const [isFeatured, setIsFeatured] = useState<boolean>(false)
+  const [content, setContent] = useState<string>(article.content)
+  const [isFeatured, setIsFeatured] = useState<boolean>(
+    article.isFeatured || false
+  )
 
-  const formMethods = useForm<CreateArticleInputs>({
-    resolver: zodResolver(createArticleSchema)
+  const formMethods = useForm<EditArticleInputs>({
+    resolver: zodResolver(editArticleSchema)
   })
 
   const {
@@ -38,7 +41,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
     formState: { isSubmitting }
   } = formMethods
 
-  const onSubmit: SubmitHandler<CreateArticleInputs> = async ({
+  const onSubmit: SubmitHandler<EditArticleInputs> = async ({
     description,
     slug,
     thumb = 'https://images.ctfassets.net/kftzwdyauwt9/35hDFegmXaio5QTQcX908E/326ac0d57b3e0be6d9e5643e321fbe28/oai_GA_Stories_1.1.png?w=1920&q=90&fm=webp',
@@ -46,7 +49,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
     categories
   }) => {
     try {
-      const { status } = await axios.post('/api/articles/create-article', {
+      const { status } = await axios.patch('/api/articles/edit-article', {
         payload: {
           description,
           title,
@@ -60,12 +63,12 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
       })
 
       if (status !== 201) {
-        toast('Houve um erro ao publicar um novo artigo.')
+        toast('Erro! Não foi possível alterar as informações do artigo')
         return
       }
 
       reset()
-      toast('O artigo foi publicado com sucesso!')
+      toast('O artigo foi atualizado com sucesso!')
       redirect('/admin/artigos')
     } catch (createArticleErr) {
       console.error(createArticleErr)
@@ -81,7 +84,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-12 lg:max-w-7xl">
       <div className="flex w-full items-center gap-4 lg:justify-between">
         <h2 className="mt-4 w-full text-2xl !font-semibold">
-          Criar Novo Artigo
+          Editar artigo existente
         </h2>
         <div className="flex w-full items-center justify-end">
           <button
@@ -89,7 +92,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
             disabled={isSubmitting}
             type="submit"
           >
-            <p className="text-center text-sm !text-white">Publicar Artigo</p>
+            <p className="text-center text-sm !text-white">Editar Artigo</p>
             {isSubmitting ? <Spin /> : null}
           </button>
         </div>
@@ -107,6 +110,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
             Informações sobre o Artigo
           </h2>
           <InputField
+            defaultValue={article.title}
             id="title"
             label="Nome do artigo"
             maxLength={120}
@@ -117,6 +121,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
             variant="secondary"
           />
           <InputField
+            defaultValue={article.slug}
             id="slug"
             label="Slug"
             maxLength={120}
@@ -127,6 +132,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
             variant="secondary"
           />
           <InputField
+            defaultValue={article.description}
             id="des"
             label="Descrição do artigo"
             maxLength={120}
@@ -138,6 +144,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
           />
           <div className="flex w-full flex-row gap-4">
             <SelectField
+              defaultValue={article.categories[0]}
               id="categories"
               label="Categorias do Artigo"
               name="categories"

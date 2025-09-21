@@ -20,7 +20,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
   ) => {
     return (
       <fieldset
-        className="flex w-full flex-col gap-2 sm:w-auto"
+        className="flex w-full flex-col gap-1 sm:w-auto"
         data-cid="input-field"
       >
         {removeLabel ? null : (

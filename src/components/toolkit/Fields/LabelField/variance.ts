@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 
-export const labelVariants = cva(['my-1', 'text-left'], {
+export const labelVariants = cva(['my-1', 'text-left', 'text-[15px]'], {
   variants: {
     variant: {
       primary: ['text-neutral-700'],

@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 
+import { getUserSession } from '@/utils/auth/getUserSession'
 import { getMetaData } from '@/utils/seo/getMetaData'
 
 export async function generateMetadata() {
@@ -12,7 +13,13 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage = async () => {
-  return <main>testando</main>
+  const user = await getUserSession()
+
+  // if (user?.role === 'student' || !user?.role) {
+  //   redirect('/')
+  // }
+
+  return <main>testando - {JSON.stringify(user)}</main>
 }
 
 export default Page

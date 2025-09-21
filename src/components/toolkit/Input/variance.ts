@@ -6,7 +6,7 @@ export const inputVariants = cva(
     'duration-300',
     'transition-all',
     'p-2.5',
-    'text-[15px]',
+    'text-sm',
     'outline-none',
     'ring-0',
     'w-full'

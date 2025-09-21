@@ -5,7 +5,7 @@ import type {
   DeleteArticlePayload,
   GetAllArticlesPayload,
   GetArticleBySlugPayload,
-  GetArticleBySlugResponse
+  UpdateArticlePayload
 } from './types'
 
 export class Articles {
@@ -33,9 +33,7 @@ export class Articles {
 
   getArticleBySlug = async ({ slug }: GetArticleBySlugPayload) => {
     try {
-      return await apiPostgres.get<GetArticleBySlugResponse>(
-        `/articles/${slug}`
-      )
+      return await apiPostgres.get(`/articles/slug/${slug}`)
     } catch (error) {
       console.error({
         getArticleBySlugErrorMessage: error.message
@@ -67,6 +65,20 @@ export class Articles {
     } catch (error) {
       console.error({
         deleteArticleErrorMessage: error.message
+      })
+    }
+  }
+
+  updateArticle = async ({ token, payload }: UpdateArticlePayload) => {
+    try {
+      return await apiPostgres.patch('/articles', payload, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+    } catch (error) {
+      console.error({
+        createArticleErrorMessage: error.message
       })
     }
   }

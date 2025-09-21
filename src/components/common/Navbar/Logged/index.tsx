@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import type { FC } from 'react'
 
 import { getUserSession } from '@/utils/auth/getUserSession'
@@ -7,7 +8,7 @@ export const Logged: FC = async () => {
   const user = await getUserSession()
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-6">
       <figure className="h-9 w-9 rounded-full">
         <Image
           alt="profile image"
@@ -17,7 +18,14 @@ export const Logged: FC = async () => {
           width={80}
         />
       </figure>
-      {user.role !== 'student' ? <button>painel de admin</button> : null}
+      {user.role !== 'student' ? (
+        <Link
+          className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
+          href="/admin"
+        >
+          Admin
+        </Link>
+      ) : null}
     </div>
   )
 }

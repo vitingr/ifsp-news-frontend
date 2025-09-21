@@ -1,5 +1,5 @@
 import type { Article } from '@/types/models/article'
 
-export interface CardProps {
-  copy: Article
+export interface ArticleHeaderProps {
+  article: Article
 }

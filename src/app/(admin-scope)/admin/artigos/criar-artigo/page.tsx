@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 
+import { supabase } from '@/instances/supabase'
 import { getMetaData } from '@/utils/seo/getMetaData'
 
 import { CreateArticleForm } from './components/Form'
-import { supabase } from '@/instances/supabase'
 
 export async function generateMetadata() {
   return getMetaData({

@@ -1,6 +1,7 @@
 'use client'
 
 import axios from 'axios'
+import { redirect } from 'next/navigation'
 import type { FC } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
@@ -44,11 +45,13 @@ export const CreateCategoryForm: FC = () => {
       })
 
       if (status !== 201) {
-        console.log('deu errado')
+        toast('Houve um erro ao publicar uma nova categoria.')
         return
       }
 
+      reset()
       toast('A categoria foi criada com sucesso!')
+      redirect('/admin/categorias')
     } catch (onSubmitErr) {
       console.error(onSubmitErr)
     } finally {
@@ -57,51 +60,53 @@ export const CreateCategoryForm: FC = () => {
   }
 
   return (
-    <form
-      className="mx-auto flex w-full max-w-2xl flex-col gap-4"
-      id="create-category-form"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <InputField
-        id="title"
-        label="Nome da categoria"
-        maxLength={120}
-        minLength={4}
-        placeholder="Digite aqui o nome da categoria"
-        spellCheck={false}
-        {...register('title')}
-        variant="secondary"
-      />
-      <InputField
-        id="slug"
-        label="Slug"
-        maxLength={120}
-        minLength={4}
-        placeholder="Esse valor é um identificador único para cada categoria"
-        spellCheck={false}
-        {...register('slug')}
-        variant="secondary"
-      />
-      <InputField
-        id="description"
-        label="Descrição da Categoria"
-        maxLength={120}
-        minLength={4}
-        placeholder="Digite aqui a descrição da categoria"
-        spellCheck={false}
-        {...register('description')}
-        variant="secondary"
-      />
-      <button
-        className="mt-4 w-full cursor-pointer rounded-md bg-neutral-700 px-4 py-3 text-center text-white hover:brightness-105 disabled:bg-neutral-500"
-        disabled={isSubmitting}
-        type="submit"
+    <section className="mx-auto w-full max-w-2xl lg:max-w-7xl">
+      <form
+        className="flex w-full max-w-2xl flex-col gap-3"
+        id="create-category-form"
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <p className="text-center text-base !text-white">
-          Criar nova categoria
-        </p>
-        {isSubmitting ? <Spin /> : null}
-      </button>
-    </form>
+        <InputField
+          id="title"
+          label="Nome da categoria"
+          maxLength={120}
+          minLength={4}
+          placeholder="Digite aqui o nome da categoria"
+          spellCheck={false}
+          {...register('title')}
+          variant="secondary"
+        />
+        <InputField
+          id="slug"
+          label="Slug"
+          maxLength={120}
+          minLength={4}
+          placeholder="Esse valor é um identificador único para cada categoria"
+          spellCheck={false}
+          {...register('slug')}
+          variant="secondary"
+        />
+        <InputField
+          id="description"
+          label="Descrição da Categoria"
+          maxLength={120}
+          minLength={4}
+          placeholder="Digite aqui a descrição da categoria"
+          spellCheck={false}
+          {...register('description')}
+          variant="secondary"
+        />
+        <button
+          className="mt-4 w-full cursor-pointer rounded-md bg-neutral-700 px-4 py-2.5 text-center text-white hover:brightness-105 disabled:bg-neutral-500"
+          disabled={isSubmitting}
+          type="submit"
+        >
+          <p className="text-center text-sm !text-white">
+            Criar nova categoria
+          </p>
+          {isSubmitting ? <Spin /> : null}
+        </button>
+      </form>
+    </section>
   )
 }
