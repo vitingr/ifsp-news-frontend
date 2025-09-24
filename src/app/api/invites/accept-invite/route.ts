@@ -5,24 +5,27 @@ import { supabase } from '@/instances/supabase'
 
 export const POST = async (req: NextRequest) => {
   try {
-    const { payload, token } = await req.json()
+    const { token } = await req.json()
 
-    const { status, data } = await supabase.categories.createCategory({
-      payload,
+    const { status, data } = await supabase.invites.acceptInvite({
       token
     })
 
-    if (status !== 201) {
+    if (status !== 200) {
       return NextResponse.json(
-        { message: data?.message || 'Cannot create a new Category.' },
+        {
+          message:
+            data?.message ||
+            'Cannot accept this invite because is invalid or expired.'
+        },
         { status: 500 }
       )
     }
 
-    return NextResponse.json({ message: 'Category Created' }, { status: 201 })
+    return NextResponse.json({ message: 'Invite accepted.' }, { status: 200 })
   } catch (err) {
     console.error({
-      'POST/api/categories/create-category': err.message
+      'POST/api/invites/accept-invite': err.message
     })
 
     return NextResponse.json(
