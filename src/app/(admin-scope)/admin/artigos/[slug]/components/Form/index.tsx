@@ -62,7 +62,7 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
         token: user?.token
       })
 
-      if (status !== 201) {
+      if (status !== 200) {
         toast('Erro! Não foi possível alterar as informações do artigo')
         return
       }
@@ -81,27 +81,27 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
   }))
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-12 lg:max-w-7xl">
+    <form
+      className="mx-auto flex w-full max-w-2xl flex-col gap-12 lg:max-w-7xl"
+      id="create-article-form"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <div className="flex w-full items-center gap-4 lg:justify-between">
         <h2 className="mt-4 w-full text-2xl !font-semibold">
           Editar artigo existente
         </h2>
         <div className="flex w-full items-center justify-end">
           <button
-            className="cursor-pointer rounded-sm bg-neutral-700 px-6 py-2 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
+            className="flex cursor-pointer items-center gap-3 rounded-sm bg-neutral-700 px-6 py-2 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
             disabled={isSubmitting}
             type="submit"
           >
             <p className="text-center text-sm !text-white">Editar Artigo</p>
-            {isSubmitting ? <Spin /> : null}
+            {isSubmitting ? <Spin className="!text-white" /> : null}
           </button>
         </div>
       </div>
-      <form
-        className="mx-auto flex w-full max-w-7xl flex-col-reverse gap-4 lg:gap-6 xl:flex-row xl:gap-12"
-        id="create-article-form"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse gap-4 lg:gap-6 xl:flex-row xl:gap-12">
         <div className="w-full">
           <TextEditor onChange={setContent} value={content} />
         </div>
@@ -144,7 +144,6 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
           />
           <div className="flex w-full flex-row gap-4">
             <SelectField
-              defaultValue={article.categories[0]}
               id="categories"
               label="Categorias do Artigo"
               name="categories"
@@ -166,7 +165,7 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
             <p className="text-sm">Destacar artigo</p>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   )
 }

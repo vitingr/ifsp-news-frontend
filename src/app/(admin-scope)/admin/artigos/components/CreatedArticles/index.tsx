@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { Pencil } from '../icons/Pencil'
 import type { CreatedArticlesProps } from './types'
 
 export const CreatedArticles: FC<CreatedArticlesProps> = async ({
@@ -49,6 +50,11 @@ export const CreatedArticles: FC<CreatedArticlesProps> = async ({
                     Criado por {article?.author?.name || 'Getulio Games'}
                   </p>
                 </article>
+                <div className="flex w-full flex-1 items-center justify-end">
+                  <div className="w-fit rounded-sm border border-neutral-200 p-3">
+                    <Pencil className="h-3.5 w-3.5 text-neutral-500" />
+                  </div>
+                </div>
               </Link>
             ))}
           </div>

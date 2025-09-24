@@ -20,7 +20,7 @@ export const spinVariants = cva(['flex', 'items-center', 'justify-center'], {
 export const spinIconVariants = cva(['inline', ' w-full', 'animate-spin'], {
   variants: {
     variant: {
-      light: ['fill-slate-500', 'text-slate-500/20'],
+      light: ['fill-neutral-200', 'text-neutral-200'],
       dark: ['fill-slate-100', 'text-slate-100/30']
     }
   },
