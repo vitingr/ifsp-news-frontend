@@ -1,6 +1,6 @@
 import type { Article } from './article'
 
-export type UserRole = 'student' | 'admin' | 'super_admin'
+export type UserRole = 'student' | 'admin' | 'author'
 
 export interface User {
   articles?: Article[]
