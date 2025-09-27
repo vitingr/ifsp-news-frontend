@@ -3,6 +3,7 @@ import { Articles } from './articles'
 import { Authors } from './authors'
 import { Categories } from './categories'
 import { Invites } from './invites'
+import { Users } from './users'
 
 export class Supabase {
   public articles: Articles
@@ -10,6 +11,7 @@ export class Supabase {
   public account: Account
   public authors: Authors
   public invites: Invites
+  public users: Users
 
   constructor() {
     this.articles = new Articles()
@@ -17,5 +19,6 @@ export class Supabase {
     this.account = new Account()
     this.authors = new Authors()
     this.invites = new Invites()
+    this.users = new Users()
   }
 }

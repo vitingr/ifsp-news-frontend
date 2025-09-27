@@ -11,6 +11,7 @@ export const useEventListener = <EventName extends keyof CustomEvents>(
   eventName: EventName,
   eventHandler: Handler<EventName>
 ) => {
+  // @ts-expect-error
   const [data, setData] = useState<CustomEvents[EventName]['data']>()
 
   const handleSetData = <Data>(data: Data) => {

@@ -2,21 +2,21 @@ import type { NextPage } from 'next'
 
 import { getMetaData } from '@/utils/seo/getMetaData'
 
-import { CreatedAuthors } from './components/CreatedAuthors'
+import { AcceptInvite } from './components/AcceptInvite'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Criar artigo',
+    title: 'Invites',
     description: '',
     image: '',
-    url: '/autores'
+    url: '/invites'
   })
 }
 
 const Page: NextPage = async () => {
   return (
     <main>
-      <CreatedAuthors />
+      <AcceptInvite />
     </main>
   )
 }

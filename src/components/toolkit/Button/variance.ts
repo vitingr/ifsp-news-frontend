@@ -17,7 +17,7 @@ export const buttonVariants = cva(
         primary: [
           'font-medium',
           'text-slate-50',
-          'bg-neutral-700',
+          'bg-neutral-800',
           'lg:hover:brightness-125',
           'flex',
           'font-normal',
@@ -129,7 +129,8 @@ export const buttonVariants = cva(
           'text-neutral-50',
           'bg-neutral-700',
           'lg:hover:brightness-125'
-        ]
+        ],
+        custom: []
       },
       size: {
         small: ['text-sm'],

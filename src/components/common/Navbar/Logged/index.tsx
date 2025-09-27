@@ -1,11 +1,14 @@
+'use client'
+
+import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
 
-import { getUserSession } from '@/utils/auth/getUserSession'
+import { useUserSession } from '@/hooks/useUserSession'
 
-export const Logged: FC = async () => {
-  const user = await getUserSession()
+export const Logged: FC = () => {
+  const session = useUserSession()
 
   return (
     <div className="flex items-center gap-6">
@@ -18,7 +21,8 @@ export const Logged: FC = async () => {
           width={80}
         />
       </figure>
-      {user.role !== 'student' ? (
+      <button onClick={() => signOut()}>sair</button>
+      {session?.user?.role !== 'student' ? (
         <Link
           className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
           href="/admin"

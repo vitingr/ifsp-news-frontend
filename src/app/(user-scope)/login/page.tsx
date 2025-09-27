@@ -2,6 +2,8 @@ import type { NextPage } from 'next'
 
 import { getMetaData } from '@/utils/seo/getMetaData'
 
+import { Header } from './components/Header'
+
 export async function generateMetadata() {
   return getMetaData({
     title: 'Login',
@@ -12,7 +14,11 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage = async () => {
-  return <main></main>
+  return (
+    <main>
+      <Header />
+    </main>
+  )
 }
 
 export default Page

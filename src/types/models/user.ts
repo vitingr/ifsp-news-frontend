@@ -10,6 +10,7 @@ export interface User {
   error?: string
   googleId?: string
   id: string
+  inviteToken?: string
   name: string
   role: UserRole
   token?: string

@@ -10,6 +10,7 @@ declare module 'next-auth' {
   interface User {
     accessToken?: string
     expiresIn?: number
+    inviteToken?: string
     refreshToken?: string
   }
 

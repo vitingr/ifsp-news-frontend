@@ -5,10 +5,11 @@ import { supabase } from '@/instances/supabase'
 
 export const POST = async (req: NextRequest) => {
   try {
-    const { token } = await req.json()
+    const { token, inviteToken } = await req.json()
 
     const { status, data } = await supabase.invites.acceptInvite({
-      token
+      token,
+      inviteToken
     })
 
     if (status !== 200) {

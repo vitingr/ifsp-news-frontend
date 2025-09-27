@@ -7,5 +7,10 @@ export interface CreateInvitePayload {
 }
 
 export interface AcceptInvitePayload {
+  inviteToken: string
   token: string
+}
+
+export interface GetInviteByTokenPayload {
+  inviteToken: string
 }

@@ -5,4 +5,7 @@ export interface CustomEvents {
     action: 'open' | 'close'
     data?: AuthModalEventData
   }
+  'invite-author': {
+    action: 'open' | 'close'
+  }
 }
