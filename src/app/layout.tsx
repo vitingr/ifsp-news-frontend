@@ -18,7 +18,7 @@ export default async function RootLayout({
 
   return (
     <html lang="pt">
-      <body>
+      <body className="overflow-x-hidden">
         <NextAuthProvider session={session}>
           {children}
           <AuthModal />

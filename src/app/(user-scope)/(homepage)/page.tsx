@@ -22,10 +22,11 @@ const Page: NextPage = async () => {
   return (
     <>
       <Navbar />
-      <main className="bg-gray-50">
+      <main className="overflow-x-hidden bg-gray-50">
         <Header />
         <LatestNews />
         <Templates />
+        <LatestNews />
         <Banner />
       </main>
       <Footer />

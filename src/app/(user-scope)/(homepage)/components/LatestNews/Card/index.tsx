@@ -11,10 +11,10 @@ export const Card: FC<CardProps> = async ({ copy }) => {
       className="flex w-full cursor-pointer items-center gap-4 overflow-hidden lg:gap-8"
       href={`/artigos/${copy.slug}`}
     >
-      <figure className="group h-[125px] w-[125px] overflow-hidden rounded-xl sm:h-[150px] sm:w-[150px] lg:h-[170px] lg:w-[170px]">
+      <figure className="group h-[125px] w-[125px] overflow-hidden rounded-md sm:h-[150px] sm:w-[150px] lg:h-[170px] lg:w-[170px]">
         <Image
           alt={copy.title}
-          className="h-[125px] w-[125px] rounded-xl object-cover transition-all duration-300 group-hover:scale-[1.01] sm:h-[150px] sm:w-[150px] lg:h-[170px] lg:w-[170px]"
+          className="h-[125px] w-[125px] rounded-md object-cover transition-all duration-300 group-hover:scale-[1.01] sm:h-[150px] sm:w-[150px] lg:h-[170px] lg:w-[170px]"
           height={1080}
           src={copy.thumb}
           width={1080}

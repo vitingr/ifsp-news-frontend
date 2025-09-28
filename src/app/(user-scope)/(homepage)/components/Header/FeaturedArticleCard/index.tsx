@@ -14,10 +14,10 @@ export const FeaturedArticleCard = async () => {
       </figure>
       <article className="bg-opacity-10 absolute bottom-0 left-0 flex min-h-[100px] w-full flex-col gap-2 !rounded-b-md bg-[#29292950] bg-clip-padding px-6 py-8 backdrop-blur-sm backdrop-filter">
         <span className="max-w-fit rounded-full border border-white px-3 py-1 text-xs !text-white">
-          Business
+          Anuncios
         </span>
         <h2 className="text-3xl !font-semibold !text-white">
-          Unlocking Business <br /> Efficiency with SaaS Solutions
+          Conheça o projeto do <br /> IFSP campeão da feira da Febrace 2025
         </h2>
       </article>
     </div>

@@ -75,12 +75,13 @@ export const Createdcategories: FC<CreatedCategoriesProps> = ({
                   </figure>
                 </div>
                 <div className="flex w-auto items-center justify-end gap-4">
-                  <button
+                  <Link
                     aria-label="Edit Category"
                     className="flex cursor-pointer items-center justify-center rounded-md bg-neutral-200 p-2.5 transition-all duration-300 hover:brightness-105"
+                    href={`/admin/categorias/${category.slug}`}
                   >
                     <Pencil className="h-4 w-4 !text-neutral-500" />
-                  </button>
+                  </Link>
                   <button
                     onClick={() =>
                       triggerCustomEvent({

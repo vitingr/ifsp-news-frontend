@@ -5,7 +5,6 @@ import type {
   DeleteCategoryPayload,
   GetAllCategoriesPayload,
   GetCategoryBySlugPayload,
-  GetCategoryBySlugResponse,
   UpdateCategoryPayload
 } from './types'
 
@@ -34,9 +33,7 @@ export class Categories {
 
   getCategoryBySlug = async ({ slug }: GetCategoryBySlugPayload) => {
     try {
-      return await apiPostgres.get<GetCategoryBySlugResponse>(
-        `/categories/${slug}`
-      )
+      return await apiPostgres.get(`/categories/slug/${slug}`)
     } catch (error) {
       console.error({
         getCategoryBySlugErrorMessage: error.message

@@ -22,9 +22,9 @@ import {
 } from '@/components/ui/sidebar'
 
 export const ICONS = [
-  <Articles className="h-4 w-4 fill-blue-600" key="articles-icon" />,
-  <Categories className="h-4 w-4 fill-indigo-800" key="categories-icon" />,
-  <People className="h-4 w-4 fill-emerald-800" key="people-icon" />
+  <Articles className="h-4 w-4 fill-neutral-500" key="articles-icon" />,
+  <Categories className="h-4 w-4 fill-neutral-500" key="categories-icon" />,
+  <People className="h-4 w-4 fill-neutral-500" key="people-icon" />
 ]
 
 export function NavMain({
@@ -43,7 +43,7 @@ export function NavMain({
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>Painel de Admin</SidebarGroupLabel>
       <SidebarMenu>
         {items.map(item => (
           <Collapsible

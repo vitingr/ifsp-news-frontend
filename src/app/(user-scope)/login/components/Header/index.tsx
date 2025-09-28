@@ -100,6 +100,10 @@ export const Header: FC = () => {
               Entrar
             </Button>
           </form>
+          <p className="mx-auto text-sm">
+            Ou entre em contato com nosso{' '}
+            <span className="text-sm !text-emerald-600">suporte</span>
+          </p>
         </div>
       </header>
       <figure className="relative w-full max-w-1/2">
