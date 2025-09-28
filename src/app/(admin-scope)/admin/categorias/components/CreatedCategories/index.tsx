@@ -1,16 +1,19 @@
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { Tag } from '../icons/Tag'
+import { NoResults } from './NoResults'
 import type { CreatedCategoriesProps } from './types'
 
 export const Createdcategories: FC<CreatedCategoriesProps> = async ({
   categories
 }) => {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <div className="max-w-2x mx-auto flex w-full flex-col gap-8 lg:max-w-7xl">
         <div className="flex w-full items-center gap-4 lg:justify-between">
-          <h2 className="mt-2 w-full text-2xl !font-semibold">
+          <h2 className="mt-2 flex w-full items-center gap-3 text-2xl !font-semibold">
+            <Tag />
             Categorias criadas
           </h2>
           <div className="flex w-full items-center justify-end">
@@ -43,7 +46,7 @@ export const Createdcategories: FC<CreatedCategoriesProps> = async ({
             ))}
           </div>
         ) : (
-          <div>Sem resultados</div>
+          <NoResults />
         )}
       </div>
     </section>

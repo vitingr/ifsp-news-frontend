@@ -6,6 +6,7 @@ import { getMetaData } from '@/utils/seo/getMetaData'
 
 import { Header } from './components/Header'
 import { LatestNews } from './components/LatestNews'
+import { Templates } from './components/Templates'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -23,6 +24,7 @@ const Page: NextPage = async () => {
       <main className="bg-gray-50">
         <Header />
         <LatestNews />
+        <Templates />
       </main>
       <Footer />
     </>

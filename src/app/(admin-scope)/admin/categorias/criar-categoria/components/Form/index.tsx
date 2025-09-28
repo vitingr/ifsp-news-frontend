@@ -12,6 +12,7 @@ import { Spin } from '@/components/toolkit/Spin'
 import { useUserSession } from '@/hooks/useUserSession'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { Tag } from '../../../components/icons/Tag'
 import type { CreateCategoryInputs } from './schemas'
 import { createCategorySchema } from './schemas'
 
@@ -60,12 +61,36 @@ export const CreateCategoryForm: FC = () => {
   }
 
   return (
-    <section className="mx-auto w-full max-w-2xl lg:max-w-7xl">
-      <form
-        className="flex w-full max-w-2xl flex-col gap-3"
-        id="create-category-form"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+    <form
+      className="mx-auto flex w-full max-w-2xl flex-col gap-6 lg:max-w-7xl"
+      id="create-category-form"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <div className="mt-4 flex w-full items-center gap-4 border-b border-neutral-200 pb-6 lg:justify-between">
+        <article className="flex flex-col gap-2">
+          <h2 className="mt-2 flex w-full items-center gap-3 text-2xl !font-semibold">
+            <Tag />
+            Criar categoria
+          </h2>
+          <p className="text-sm !text-neutral-500">
+            As categorias tem o propósito de facilitar a filtragem e para que os
+            usuários encontrem o que desejam mais rapidamente
+          </p>
+        </article>
+        <div className="flex w-full flex-1 items-center justify-end">
+          <button
+            className="flex cursor-pointer items-center gap-3 rounded-sm bg-neutral-700 px-6 py-2 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
+            disabled={isSubmitting}
+            type="submit"
+          >
+            <p className="text-center text-sm !text-white">
+              Publicar Categoria
+            </p>
+            {isSubmitting ? <Spin className="!text-white" /> : null}
+          </button>
+        </div>
+      </div>
+      <div className="flex w-full max-w-2xl flex-col gap-3 lg:max-w-7xl">
         <InputField
           id="title"
           label="Nome da categoria"
@@ -96,17 +121,7 @@ export const CreateCategoryForm: FC = () => {
           {...register('description')}
           variant="secondary"
         />
-        <button
-          className="mt-4 w-full cursor-pointer rounded-md bg-neutral-700 px-4 py-2.5 text-center text-white hover:brightness-105 disabled:bg-neutral-500"
-          disabled={isSubmitting}
-          type="submit"
-        >
-          <p className="text-center text-sm !text-white">
-            Criar nova categoria
-          </p>
-          {isSubmitting ? <Spin /> : null}
-        </button>
-      </form>
-    </section>
+      </div>
+    </form>
   )
 }

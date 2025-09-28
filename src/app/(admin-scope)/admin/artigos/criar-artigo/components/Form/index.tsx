@@ -14,6 +14,7 @@ import { Spin } from '@/components/toolkit/Spin'
 import { useUserSession } from '@/hooks/useUserSession'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { News } from '../../../components/icons/News'
 import type { CreateArticleInputs } from './schemas'
 import { createArticleSchema } from './schemas'
 import { TextEditor } from './TextEditor'
@@ -81,15 +82,22 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
 
   return (
     <form
-      className="mx-auto flex w-full max-w-2xl flex-col gap-12 lg:max-w-7xl"
+      className="mx-auto mt-4 flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl"
       id="create-article-form"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex w-full items-center gap-4 lg:justify-between">
-        <h2 className="mt-4 w-full text-2xl !font-semibold">
-          Criar Novo Artigo
-        </h2>
-        <div className="flex w-full items-center justify-end">
+      <div className="flex w-full items-center gap-4 border-b border-neutral-200 pb-8 lg:justify-between">
+        <article className="flex flex-col gap-2">
+          <h2 className="mt-2 flex w-full items-center gap-3 text-2xl !font-semibold">
+            <News />
+            Criar artigo
+          </h2>
+          <p className="text-sm !text-neutral-500">
+            Os artigos são postagens que podem ser descobertas e lidas pelos
+            usuários
+          </p>
+        </article>
+        <div className="flex w-full flex-1 items-center justify-end">
           <button
             className="flex cursor-pointer items-center gap-3 rounded-sm bg-neutral-700 px-6 py-2 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
             disabled={isSubmitting}
@@ -104,7 +112,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
         <div className="w-full">
           <TextEditor onChange={setContent} value={content} />
         </div>
-        <div className="flex w-full flex-col gap-3 rounded-sm xl:max-w-md xl:border xl:border-neutral-200 xl:bg-neutral-50 xl:px-4 xl:py-6">
+        <div className="flex w-full flex-col gap-3 rounded-sm bg-white xl:max-w-md xl:border xl:border-neutral-200 xl:px-4 xl:py-6">
           <h2 className="hidden text-xl !font-semibold xl:block">
             Informações sobre o Artigo
           </h2>

@@ -18,7 +18,7 @@ const AdminLayout: FC<PropsWithChildren> = async ({ children }) => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset>
+      <SidebarInset className="bg-[#f3f4f0]">
         <header className="mx-auto flex h-16 w-full max-w-2xl shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 lg:max-w-7xl">
           <div className="flex items-center gap-1 px-4 2xl:pr-4 2xl:pl-0">
             <SidebarTrigger className="-ml-1" />

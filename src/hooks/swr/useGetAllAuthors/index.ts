@@ -1,17 +1,19 @@
 import axios from 'axios'
 import useSWR from 'swr'
 
+import type { User } from '@/types/models/user'
+
 const fetcher = async () => {
-  const { data } = await axios.get(`/api/authors/get-all-authors`)
+  const { data } = await axios.get(`/api/authors`)
 
   return data
 }
 
 export const useGetAllAuthors = () => {
-  const { data = [], ...rest } = useSWR(['useGetAllAuthors', fetcher])
+  const { data = [], ...rest } = useSWR('useGetAllAuthors', fetcher)
 
   return {
-    authors: data,
+    authors: data as User[],
     ...rest
   }
 }

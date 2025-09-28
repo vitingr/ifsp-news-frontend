@@ -7,6 +7,8 @@ export const GET = async (req: NextRequest) => {
   try {
     const { data } = await supabase.authors.getAllAuthors({})
 
+    console.log(JSON.stringify(data))
+
     return NextResponse.json(data, { status: 200 })
   } catch (err) {
     console.error({
