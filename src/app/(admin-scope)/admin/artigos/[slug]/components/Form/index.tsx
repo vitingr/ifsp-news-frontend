@@ -7,13 +7,16 @@ import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
+import { UploadButton } from '@/components/common/UploadButton'
 import { InputField } from '@/components/toolkit/Fields/InputField'
 import { SelectField } from '@/components/toolkit/Fields/SelectField'
 import { Spin } from '@/components/toolkit/Spin'
 import { useUserSession } from '@/hooks/useUserSession'
+import { uploadImage } from '@/utils/helpers/uploadImage'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Check } from '../icons/Check'
+import { MediaIcon } from '../icons/Media'
 import type { EditArticleInputs } from './schemas'
 import { editArticleSchema } from './schemas'
 import { TextEditor } from './TextEditor'
@@ -29,6 +32,8 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
   const [isFeatured, setIsFeatured] = useState<boolean>(
     article.isFeatured || false
   )
+  const [articleThumb, setArticleThumb] = useState<string>(article.thumb)
+  const [isUploadLoading, setIsUploadLoading] = useState<boolean>(false)
 
   const formMethods = useForm<EditArticleInputs>({
     resolver: zodResolver(editArticleSchema)
@@ -44,7 +49,6 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
   const onSubmit: SubmitHandler<EditArticleInputs> = async ({
     description,
     slug,
-    thumb = 'https://images.ctfassets.net/kftzwdyauwt9/35hDFegmXaio5QTQcX908E/326ac0d57b3e0be6d9e5643e321fbe28/oai_GA_Stories_1.1.png?w=1920&q=90&fm=webp',
     title,
     categories
   }) => {
@@ -54,7 +58,9 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
           description,
           title,
           slug,
-          thumb,
+          thumb: articleThumb
+            ? articleThumb
+            : 'https://images.ctfassets.net/kftzwdyauwt9/35hDFegmXaio5QTQcX908E/326ac0d57b3e0be6d9e5643e321fbe28/oai_GA_Stories_1.1.png?w=1920&q=90&fm=webp',
           content,
           isFeatured,
           categories: [categories]
@@ -73,6 +79,18 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
       redirect('/admin/artigos')
     } catch (createArticleErr) {
       console.error(createArticleErr)
+    }
+  }
+
+  const handleUploadImage = async (path: string) => {
+    try {
+      setIsUploadLoading(true)
+      const imagePath = await uploadImage({ imagePath: path })
+      setArticleThumb(imagePath.url)
+    } catch (uploadImageError) {
+      console.log(uploadImageError)
+    } finally {
+      setIsUploadLoading(false)
     }
   }
 
@@ -110,6 +128,18 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
           <h2 className="hidden text-xl !font-semibold xl:block">
             Informações sobre o Artigo
           </h2>
+          <div className="mb-4 flex h-full max-h-[258px] flex-col items-center justify-center gap-4 border p-4">
+            <MediaIcon />
+            <UploadButton
+              uploadImageAction={async (path: string) =>
+                await handleUploadImage(path)
+              }
+              isLoading={isUploadLoading}
+              setImagePath={setArticleThumb}
+            >
+              <p className="cursor-pointer">Escolher imagem</p>
+            </UploadButton>
+          </div>
           <InputField
             defaultValue={article.title}
             id="title"

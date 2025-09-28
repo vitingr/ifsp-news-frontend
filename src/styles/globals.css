@@ -191,9 +191,14 @@ html {
     0 4px 4px -4px rgba(34, 47, 62, .05) !important;
 }
 
+.tox {
+  height: 720px !important;
+}
+
 .tox-tinymce {
   border: 1px solid #eee !important;
   border-radius: 4px !important;
+  height: 720px !important;
 }
 
 .tox-editor-container button {
@@ -463,4 +468,8 @@ html {
 .action-admin-button:active::before {
   -webkit-box-shadow: 0 0 0 2px #404040, 0 0 #f3f4f0;
   box-shadow: 0 0 0 2px #404040, 0 0 #e4e6e0;
+}
+
+.silk-banner > div > div > canvas {
+  border-radius: 20px !important;
 }

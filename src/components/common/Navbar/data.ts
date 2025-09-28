@@ -1,30 +1,30 @@
 export const NAVBAR_LINKS = [
   {
-    label: 'Artigos 1',
+    label: 'Anuncios',
     href: '#'
   },
   {
-    label: 'Artigos 2',
+    label: 'Projetos',
     href: '#'
   },
   {
-    label: 'Artigos 3',
+    label: 'Esportes',
     href: '#'
   },
   {
-    label: 'Artigos 4',
+    label: 'Eventos',
     href: '#'
   },
   {
-    label: 'Artigos 5',
+    label: 'Aulas',
     href: '#'
   },
   {
-    label: 'Artigos 6',
+    label: 'Diretoria',
     href: '#'
   },
   {
-    label: 'Artigos 7',
+    label: 'Outros',
     href: '#'
   }
 ]

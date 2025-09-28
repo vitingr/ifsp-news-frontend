@@ -31,9 +31,9 @@ const data = {
   },
   teams: [
     {
-      name: 'Acme Inc',
+      name: 'IFSP News',
       logo: GalleryVerticalEnd,
-      plan: 'Enterprise'
+      plan: 'Painel de Admin'
     },
     {
       name: 'Acme Corp.',

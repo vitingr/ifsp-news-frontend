@@ -2,6 +2,9 @@
 
 import { ChevronRight, type LucideIcon } from 'lucide-react'
 
+import { Articles } from '@/assets/common/Articles'
+import { Categories } from '@/assets/common/Categories'
+import { People } from '@/assets/common/People'
 import {
   Collapsible,
   CollapsibleContent,
@@ -17,6 +20,12 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem
 } from '@/components/ui/sidebar'
+
+export const ICONS = [
+  <Articles className="h-4 w-4 fill-blue-600" key="articles-icon" />,
+  <Categories className="h-4 w-4 fill-indigo-800" key="categories-icon" />,
+  <People className="h-4 w-4 fill-emerald-800" key="people-icon" />
+]
 
 export function NavMain({
   items
@@ -53,10 +62,14 @@ export function NavMain({
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarMenuSub>
-                  {item.items?.map(subItem => (
+                  {item.items?.map((subItem, index: number) => (
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild>
-                        <a href={subItem.url}>
+                        <a
+                          className="flex items-center gap-2"
+                          href={subItem.url}
+                        >
+                          {ICONS[index]}
                           <span>{subItem.title}</span>
                         </a>
                       </SidebarMenuSubButton>

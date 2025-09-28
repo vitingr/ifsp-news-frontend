@@ -21,10 +21,10 @@ export const Card: FC<CardProps> = async ({ copy }) => {
         />
       </figure>
       <article className="flex w-full flex-1 flex-col gap-3">
-        <h3 className="text-lg font-semibold lg:text-xl">{copy.title}</h3>
-        <div className="flex w-full items-center gap-2">
-          <p className="text-sm font-medium">Categoria de teste</p>
-          <p className="text-sm text-neutral-500">
+        <h3 className="text-lg !font-semibold lg:text-xl">{copy.title}</h3>
+        <div className="flex w-full flex-col gap-2">
+          <p className="text-sm">{copy.description}</p>
+          <p className="text-sm !text-neutral-500">
             {copy.createdAt.toString()}
           </p>
         </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { Plus } from 'lucide-react'
+import Image from 'next/image'
 import * as React from 'react'
 
 import {
@@ -42,9 +43,15 @@ export function TeamSwitcher({
             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             size="lg"
           >
-            <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-              <activeTeam.logo className="size-4" />
-            </div>
+            <figure className="mx-auto h-10 w-10">
+              <Image
+                alt="IFSP Logo"
+                className="h-10 w-10 object-cover"
+                height={200}
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Instituto_Federal_de_S%C3%A3o_Paulo_-_Marca_Vertical_2015.svg/2383px-Instituto_Federal_de_S%C3%A3o_Paulo_-_Marca_Vertical_2015.svg.png"
+                width={200}
+              />
+            </figure>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">{activeTeam.name}</span>
               <span className="truncate text-xs">{activeTeam.plan}</span>
@@ -65,9 +72,15 @@ export function TeamSwitcher({
                 key={team.name}
                 onClick={() => setActiveTeam(team)}
               >
-                <div className="flex size-6 items-center justify-center rounded-md border">
-                  <team.logo className="size-3.5 shrink-0" />
-                </div>
+                <figure className="mx-auto h-10 w-10">
+                  <Image
+                    alt="IFSP Logo"
+                    className="h-10 w-10 object-cover"
+                    height={200}
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Instituto_Federal_de_S%C3%A3o_Paulo_-_Marca_Vertical_2015.svg/2383px-Instituto_Federal_de_S%C3%A3o_Paulo_-_Marca_Vertical_2015.svg.png"
+                    width={200}
+                  />
+                </figure>
                 {team.name}
                 <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>

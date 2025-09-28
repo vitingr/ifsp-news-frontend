@@ -4,6 +4,7 @@ import { Footer } from '@/components/common/Footer'
 import { Navbar } from '@/components/common/Navbar'
 import { getMetaData } from '@/utils/seo/getMetaData'
 
+import { Banner } from './components/Banner'
 import { Header } from './components/Header'
 import { LatestNews } from './components/LatestNews'
 import { Templates } from './components/Templates'
@@ -25,6 +26,7 @@ const Page: NextPage = async () => {
         <Header />
         <LatestNews />
         <Templates />
+        <Banner />
       </main>
       <Footer />
     </>
