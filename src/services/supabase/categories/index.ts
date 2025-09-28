@@ -5,7 +5,8 @@ import type {
   DeleteCategoryPayload,
   GetAllCategoriesPayload,
   GetCategoryBySlugPayload,
-  GetCategoryBySlugResponse
+  GetCategoryBySlugResponse,
+  UpdateCategoryPayload
 } from './types'
 
 export class Categories {
@@ -68,6 +69,20 @@ export class Categories {
     } catch (error) {
       console.error({
         deleteCategoryErrorMessage: error.message
+      })
+    }
+  }
+
+  updateCategory = async ({ id, token, payload }: UpdateCategoryPayload) => {
+    try {
+      return await apiPostgres.patch(`/categories/${id}`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+    } catch (error) {
+      console.error({
+        updateCategoryErrorMessage: error.message
       })
     }
   }

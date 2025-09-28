@@ -1,0 +1,36 @@
+name: "(CI): Verify Build And Plan"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+jobs:
+  continuos-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Run Build
+        run: |
+          npm run build
+
+      - name: Docker Build
+        run : |
+          docker build -t ci -f Dockerfile .
+
+      - name: Authorization
+        run: |
+          echo "Your Pull Request has been authorized successfully! 🥳"

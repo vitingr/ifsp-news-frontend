@@ -27,6 +27,16 @@ export interface DeleteCategoryPayload {
   token: string
 }
 
+export interface UpdateCategoryPayload {
+  id: string
+  payload: {
+    title: string
+    slug: string
+    description: string
+  }
+  token: string
+}
+
 export interface GetAllCategoriesResponse extends PaginationData {
   categories: Category[]
 }

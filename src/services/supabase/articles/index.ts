@@ -69,9 +69,9 @@ export class Articles {
     }
   }
 
-  updateArticle = async ({ token, payload }: UpdateArticlePayload) => {
+  updateArticle = async ({ token, payload, id }: UpdateArticlePayload) => {
     try {
-      return await apiPostgres.patch('/articles', payload, {
+      return await apiPostgres.patch(`/articles/${id}`, payload, {
         headers: {
           Authorization: `Bearer ${token}`
         }

@@ -21,19 +21,22 @@ export interface CreateArticlePayload {
   token: string
 }
 
-export interface UpdateArticlePayload {
-  payload: {
-    title: string
-    slug: string
-    description?: string
-    isFeatured: boolean
-    content: string
-  }
+export interface DeleteArticlePayload {
+  id: string
   token: string
 }
 
-export interface DeleteArticlePayload {
+export interface UpdateArticlePayload {
   id: string
+  payload: {
+    title: string
+    slug: string
+    content: string
+    thumb: string
+    description?: string
+    isFeatured: boolean
+    categories: string[]
+  }
   token: string
 }
 
