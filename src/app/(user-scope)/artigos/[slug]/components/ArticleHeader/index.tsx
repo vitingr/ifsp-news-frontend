@@ -15,16 +15,12 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({ article }) => {
         <Breadcrumb items={[{ name: article.title, href: '#' }]} />
         <article className="mt-4 flex w-full flex-col">
           <p className="text-sm !text-neutral-500">ATUALIZAÇÃO</p>
-          <p className="text-sm !text-neutral-500">11 de setembro de 2025</p>
+          <p className="text-sm !text-neutral-500">28 de setembro de 2025</p>
         </article>
         <h1 className="text-2xl !font-bold lg:text-4xl 2xl:text-5xl">
-          Prepare-se para conhecer e comprar a nova geração de iPhone, Apple
-          Watch e AirPods
+          {article.title}
         </h1>
-        <p className="text-lg">
-          A pré-venda dos modelos do iPhone e dos acessórios começa sexta-feira,
-          com até US$ 1.100 de economia com ofertas de operadoras nos EUA
-        </p>
+        <p className="text-lg">{article.description}</p>
         <div className="flex items-center gap-3">
           <Facebook className="h-4 w-4 cursor-pointer transition-all duration-300 hover:brightness-105" />
           <WhatsApp className="h-5 w-5 cursor-pointer transition-all duration-300 hover:brightness-105" />

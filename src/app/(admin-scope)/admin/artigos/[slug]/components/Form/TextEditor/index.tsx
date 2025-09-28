@@ -17,7 +17,7 @@ export const TextEditor: FC<TextEditorProps> = ({ value, onChange }) => {
           'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat'
       }}
       apiKey={tinyMceToken}
-      initialValue="Escreva seu artigo aqui!"
+      initialValue={value}
       onEditorChange={onChange}
       value={value}
     />

@@ -14,6 +14,9 @@ import {
 } from '@/components/ui/sidebar'
 import { Separator } from '@radix-ui/react-separator'
 
+import { DeleteArticleModal } from './admin/artigos/components/CreatedArticles/DeleteArticleModal'
+import { DeleteCategoryModal } from './admin/categorias/components/CreatedCategories/DeleteCategoryModal'
+
 const AdminLayout: FC<PropsWithChildren> = async ({ children }) => {
   return (
     <SidebarProvider>
@@ -41,6 +44,8 @@ const AdminLayout: FC<PropsWithChildren> = async ({ children }) => {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
       </SidebarInset>
+      <DeleteCategoryModal />
+      <DeleteArticleModal />
     </SidebarProvider>
   )
 }

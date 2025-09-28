@@ -1,13 +1,6 @@
 'use client'
 
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Sparkles
-} from 'lucide-react'
+import { BadgeCheck, Bell, CreditCard, LogOut, Sparkles } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -25,6 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar
 } from '@/components/ui/sidebar'
+import { useUserSession } from '@/hooks/useUserSession'
 
 export function NavUser({
   user
@@ -35,6 +29,8 @@ export function NavUser({
     avatar: string
   }
 }) {
+  const session = useUserSession()
+
   const { isMobile } = useSidebar()
 
   return (
@@ -47,14 +43,18 @@ export function NavUser({
               size="lg"
             >
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage alt={user.name} src={user.avatar} />
+                <AvatarImage
+                  alt={session?.user?.name}
+                  src={session?.user?.avatarUrl}
+                />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-medium">
+                  {session?.user?.name}
+                </span>
+                <span className="truncate text-xs">{session?.user?.email}</span>
               </div>
-              <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -66,12 +66,19 @@ export function NavUser({
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage alt={user.name} src={user.avatar} />
+                  <AvatarImage
+                    alt={session?.user?.name}
+                    src={session?.user?.avatarUrl}
+                  />
                   <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate font-medium">
+                    {session?.user?.name}
+                  </span>
+                  <span className="truncate text-xs">
+                    {session?.user?.email}
+                  </span>
                 </div>
               </div>
             </DropdownMenuLabel>

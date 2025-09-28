@@ -32,7 +32,7 @@ export const CreatedAuthors: FC = () => {
                   }
                 })
               }
-              className="cursor-pointer rounded-sm bg-neutral-700 px-6 py-2 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
+              className="action-admin-button"
               variant="custom"
             >
               Convidar novo Autor
@@ -40,7 +40,7 @@ export const CreatedAuthors: FC = () => {
           </div>
         </div>
         {authors?.length > 0 ? (
-          <div className="flex w-full flex-col gap-6 rounded-sm border border-neutral-200 bg-white px-6 py-8 shadow">
+          <div className="flex w-full flex-col gap-6 rounded-sm border border-neutral-200 bg-white px-6 py-8">
             {authors.map((author, index: number) => (
               <div
                 className="flex w-full items-center gap-4 rounded-sm bg-white"

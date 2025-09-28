@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 import { supabase } from '@/instances/supabase'
 
-export const DELETE = async (req: NextRequest) => {
+export const POST = async (req: NextRequest) => {
   try {
     const { categoryId, token } = await req.json()
 

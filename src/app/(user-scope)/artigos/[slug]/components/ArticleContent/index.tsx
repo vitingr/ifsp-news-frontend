@@ -7,62 +7,11 @@ export const ArticleContent: FC<ArticleContentProps> = ({ article }) => {
   return (
     <section className="w-full px-4 pb-12 lg:pb-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-3xl lg:gap-12">
-        <div className="w-full">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-          excepturi quam ad voluptatibus saepe repellat, vero natus qui rerum
-          eius tempora a ea quisquam modi asperiores impedit cum ut sed? Lorem
-          ipsum, dolor sit amet consectetur adipisicing elit. Magnam itaque vero
-          necessitatibus voluptatum ad dolorem cupiditate error. Totam, vero.
-          Non mollitia necessitatibus iure nobis enim tempora quod autem
-          voluptate nihil! Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Magnam itaque vero necessitatibus voluptatum ad dolorem
-          cupiditate error. Totam, vero. Non mollitia necessitatibus iure nobis
-          enim tempora quod autem voluptate nihil! Lorem ipsum, dolor sit amet
-          consectetur adipisicing elit. Magnam itaque vero necessitatibus
-          voluptatum ad dolorem cupiditate error. Totam, vero. Non mollitia
-          necessitatibus iure nobis enim tempora quod autem voluptate nihil!
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          itaque vero necessitatibus voluptatum ad dolorem cupiditate error.
-          Totam, vero. Non mollitia necessitatibus iure nobis enim tempora quod
-          autem voluptate nihil! Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Magnam itaque vero necessitatibus voluptatum ad
-          dolorem cupiditate error. Totam, vero. Non mollitia necessitatibus
-          iure nobis enim tempora quod autem voluptate nihil! Lorem ipsum, dolor
-          sit amet consectetur adipisicing elit. Magnam itaque vero
-          necessitatibus voluptatum ad dolorem cupiditate error. Totam, vero.
-          Non mollitia necessitatibus iure nobis enim tempora quod autem
-          voluptate nihil! Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Magnam itaque vero necessitatibus voluptatum ad dolorem
-          cupiditate error. Totam, vero. Non mollitia necessitatibus iure nobis
-          enim tempora quod autem voluptate nihil! Lorem ipsum, dolor sit amet
-          consectetur adipisicing elit. Magnam itaque vero necessitatibus
-          voluptatum ad dolorem cupiditate error. Totam, vero. Non mollitia
-          necessitatibus iure nobis enim tempora quod autem voluptate nihil!
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          itaque vero necessitatibus voluptatum ad dolorem cupiditate error.
-          Totam, vero. Non mollitia necessitatibus iure nobis enim tempora quod
-          autem voluptate nihil! Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Magnam itaque vero necessitatibus voluptatum ad
-          dolorem cupiditate error. Totam, vero. Non mollitia necessitatibus
-          iure nobis enim tempora quod autem voluptate nihil! Lorem ipsum, dolor
-          sit amet consectetur adipisicing elit. Magnam itaque vero
-          necessitatibus voluptatum ad dolorem cupiditate error. Totam, vero.
-          Non mollitia necessitatibus iure nobis enim tempora quod autem
-          voluptate nihil! Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Magnam itaque vero necessitatibus voluptatum ad dolorem
-          cupiditate error. Totam, vero. Non mollitia necessitatibus iure nobis
-          enim tempora quod autem voluptate nihil! Lorem ipsum, dolor sit amet
-          consectetur adipisicing elit. Magnam itaque vero necessitatibus
-          voluptatum ad dolorem cupiditate error. Totam, vero. Non mollitia
-          necessitatibus iure nobis enim tempora quod autem voluptate nihil!
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          itaque vero necessitatibus voluptatum ad dolorem cupiditate error.
-          Totam, vero. Non mollitia necessitatibus iure nobis enim tempora quod
-          autem voluptate nihil! Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Magnam itaque vero necessitatibus voluptatum ad
-          dolorem cupiditate error. Totam, vero. Non mollitia necessitatibus
-          iure nobis enim tempora quod autem voluptate nihil!
-        </div>
+        <div
+          className="w-full"
+          dangerouslySetInnerHTML={{ __html: article.content }}
+          data-cid="article-content"
+        />
         <article className="flex w-full flex-col gap-4 rounded-sm border border-neutral-200 bg-neutral-100 p-4">
           <div className="flex w-full items-center gap-3">
             <figure className="flex w-auto items-center justify-center">

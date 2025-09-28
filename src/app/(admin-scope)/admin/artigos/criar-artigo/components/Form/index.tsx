@@ -7,7 +7,6 @@ import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { Check } from '@/assets/common/Check'
 import { InputField } from '@/components/toolkit/Fields/InputField'
 import { SelectField } from '@/components/toolkit/Fields/SelectField'
 import { Spin } from '@/components/toolkit/Spin'
@@ -15,6 +14,7 @@ import { useUserSession } from '@/hooks/useUserSession'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { News } from '../../../components/icons/News'
+import { Check } from '../icons/Check'
 import type { CreateArticleInputs } from './schemas'
 import { createArticleSchema } from './schemas'
 import { TextEditor } from './TextEditor'
@@ -99,11 +99,11 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
         </article>
         <div className="flex w-full flex-1 items-center justify-end">
           <button
-            className="flex cursor-pointer items-center gap-3 rounded-sm bg-neutral-700 px-6 py-2 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
+            className="action-admin-button !flex !items-center !gap-3"
             disabled={isSubmitting}
             type="submit"
           >
-            <p className="text-center text-sm !text-white">Publicar Artigo</p>
+            <p className="text-center text-sm">Publicar Artigo</p>
             {isSubmitting ? <Spin className="!text-white" /> : null}
           </button>
         </div>
@@ -143,13 +143,13 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
             minLength={4}
             placeholder="Digite aqui a descrição do artigo"
             spellCheck={false}
-            {...register('description')}
             variant="secondary"
+            {...register('description')}
           />
           <div className="flex w-full flex-row gap-4">
             <SelectField
               id="categories"
-              label="Categorias do Artigo"
+              label="Categoria do Artigo"
               name="categories"
               options={formattedAvailableCategories}
               variant="secondary"
@@ -158,7 +158,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
           </div>
           <div className="ml-1 flex w-full items-center gap-2">
             <button
-              className={`h-5 w-5 cursor-pointer rounded-[3px] border transition-all duration-300 ${isFeatured ? 'border-blue-600 bg-blue-600' : 'border-neutral-300 bg-white'}`}
+              className={`flex h-5 w-5 cursor-pointer items-center justify-center rounded-[3px] border transition-all duration-300 ${isFeatured ? 'border-blue-600 bg-blue-600' : 'border-neutral-300 bg-white'}`}
               onClick={() => setIsFeatured(!isFeatured)}
               type="button"
             >

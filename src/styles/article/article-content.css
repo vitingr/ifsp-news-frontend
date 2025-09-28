@@ -1,0 +1,18 @@
+[data-cid="article-content"] {
+  h2 {
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

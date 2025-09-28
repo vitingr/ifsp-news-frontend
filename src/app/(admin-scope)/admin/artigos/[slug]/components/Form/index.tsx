@@ -7,13 +7,13 @@ import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { Check } from '@/assets/common/Check'
 import { InputField } from '@/components/toolkit/Fields/InputField'
 import { SelectField } from '@/components/toolkit/Fields/SelectField'
 import { Spin } from '@/components/toolkit/Spin'
 import { useUserSession } from '@/hooks/useUserSession'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { Check } from '../icons/Check'
 import type { EditArticleInputs } from './schemas'
 import { editArticleSchema } from './schemas'
 import { TextEditor } from './TextEditor'
@@ -59,7 +59,8 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
           isFeatured,
           categories: [categories]
         },
-        token: user?.token
+        token: user?.token,
+        articleId: article.id
       })
 
       if (status !== 200) {
@@ -92,12 +93,12 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
         </h2>
         <div className="flex w-full items-center justify-end">
           <button
-            className="flex cursor-pointer items-center gap-3 rounded-sm bg-neutral-700 px-6 py-2 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
+            className="action-admin-button !flex !items-center !gap-3"
             disabled={isSubmitting}
             type="submit"
           >
-            <p className="text-center text-sm !text-white">Editar Artigo</p>
-            {isSubmitting ? <Spin className="!text-white" /> : null}
+            <p className="text-center text-sm">Editar Artigo</p>
+            {isSubmitting ? <Spin className="!text-neutral-500" /> : null}
           </button>
         </div>
       </div>
@@ -154,7 +155,7 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
           </div>
           <div className="ml-1 flex w-full items-center gap-2">
             <button
-              className={`h-5 w-5 cursor-pointer rounded-[3px] border transition-all duration-300 ${isFeatured ? 'border-blue-600 bg-blue-600' : 'border-neutral-300 bg-white'}`}
+              className={`flex h-5 w-5 cursor-pointer items-center justify-center rounded-[3px] border transition-all duration-300 ${isFeatured ? 'border-blue-600 bg-blue-600' : 'border-neutral-300 bg-white'}`}
               onClick={() => setIsFeatured(!isFeatured)}
               type="button"
             >

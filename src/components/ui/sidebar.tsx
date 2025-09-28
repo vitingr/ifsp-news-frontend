@@ -267,7 +267,7 @@ function SidebarTrigger({
         onClick?.(event)
         toggleSidebar()
       }}
-      className={cn('size-7 cursor-pointer', className)}
+      className={cn('size-7 cursor-pointer hover:bg-neutral-200', className)}
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
       size="icon"
@@ -643,7 +643,7 @@ function SidebarMenuSub({ className, ...props }: React.ComponentProps<'ul'>) {
   return (
     <ul
       className={cn(
-        'border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5',
+        'mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-neutral-400 px-2.5 py-0.5',
         'group-data-[collapsible=icon]:hidden',
         className
       )}

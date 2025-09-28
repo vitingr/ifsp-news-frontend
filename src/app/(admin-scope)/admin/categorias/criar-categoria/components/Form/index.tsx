@@ -79,13 +79,11 @@ export const CreateCategoryForm: FC = () => {
         </article>
         <div className="flex w-full flex-1 items-center justify-end">
           <button
-            className="flex cursor-pointer items-center gap-3 rounded-sm bg-neutral-700 px-6 py-2 text-center text-sm !text-white transition-all duration-300 hover:bg-neutral-600"
+            className="action-admin-button flex items-center gap-3"
             disabled={isSubmitting}
             type="submit"
           >
-            <p className="text-center text-sm !text-white">
-              Publicar Categoria
-            </p>
+            <p className="text-center text-sm">Publicar Categoria</p>
             {isSubmitting ? <Spin className="!text-white" /> : null}
           </button>
         </div>
