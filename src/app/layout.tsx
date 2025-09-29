@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/sonner'
 import NextAuthProvider from '@/context/NextAuthProvider'
 import { authOptions } from '@/lib/auth'
 
-//@ts-expect-error
+//@ts-ignore
 import '@/styles/globals.css'
 
 export default async function RootLayout({

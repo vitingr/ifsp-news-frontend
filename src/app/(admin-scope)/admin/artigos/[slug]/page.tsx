@@ -8,7 +8,7 @@ import type { ArticleDynamicPage } from './types'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Criar artigo',
+    title: 'IFSP News | Editar artigo',
     description: '',
     image: '',
     url: '/admin/artigos/editar-artigo'

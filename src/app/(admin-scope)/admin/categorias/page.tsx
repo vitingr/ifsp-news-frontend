@@ -7,7 +7,7 @@ import { Createdcategories } from './components/CreatedCategories'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Criar artigo',
+    title: 'IFSP News | Categorias publicadas',
     description: '',
     image: '',
     url: '/categorias'

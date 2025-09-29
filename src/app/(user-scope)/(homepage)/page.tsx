@@ -7,8 +7,8 @@ import { getMetaData } from '@/utils/seo/getMetaData'
 import { Banner } from './components/Banner'
 import { Header } from './components/Header'
 import { LatestNews } from './components/LatestNews'
-import { Templates } from './components/Templates'
 import { Others } from './components/Others'
+import { Templates } from './components/Templates'
 
 export async function generateMetadata() {
   return getMetaData({

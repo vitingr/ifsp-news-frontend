@@ -69,16 +69,20 @@ void main() {
 }
 `
 
+//@ts-ignore
 const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
   const { viewport } = useThree()
 
   useLayoutEffect(() => {
+    //@ts-ignore
     if (ref.current) {
+      //@ts-ignore
       ref.current.scale.set(viewport.width, viewport.height, 1)
     }
   }, [ref, viewport])
 
   useFrame((_, delta) => {
+    //@ts-ignore
     ref.current.material.uniforms.uTime.value += 0.1 * delta
   })
 
@@ -102,6 +106,7 @@ const Silk = ({
   noiseIntensity = 1.5,
   rotation = 0
 }) => {
+  //@ts-ignore
   const meshRef = useRef()
 
   const uniforms = useMemo(
@@ -118,6 +123,7 @@ const Silk = ({
 
   return (
     <Canvas dpr={[1, 2]} frameloop="always">
+      {/* @ts-ignore */}
       <SilkPlane ref={meshRef} uniforms={uniforms} />
     </Canvas>
   )

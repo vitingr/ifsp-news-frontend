@@ -4,6 +4,7 @@ import axios from 'axios'
 import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
+import { Loading } from '@/components/common/Loading'
 import type { Invite } from '@/types/models/invite'
 
 import { Result } from '../Result'
@@ -36,8 +37,14 @@ export const AcceptInvite: FC = () => {
   }, [])
 
   return (
-    <section className="h-screen w-screen">
-      {loading ? <p>carregando...</p> : <Result invite={invite} />}
+    <section className="flex h-screen w-screen items-center justify-center">
+      {loading ? (
+        <div className="justfiy-center mx-auto flex items-center">
+          <Loading />
+        </div>
+      ) : (
+        <Result invite={invite} />
+      )}
     </section>
   )
 }

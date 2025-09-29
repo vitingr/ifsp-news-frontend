@@ -15,6 +15,7 @@ import { useUserSession } from '@/hooks/useUserSession'
 import { uploadImage } from '@/utils/helpers/uploadImage'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { News } from '../../../components/icons/News'
 import { Check } from '../icons/Check'
 import { MediaIcon } from '../icons/Media'
 import type { EditArticleInputs } from './schemas'
@@ -38,7 +39,10 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
   const [isUploadLoading, setIsUploadLoading] = useState<boolean>(false)
 
   const formMethods = useForm<EditArticleInputs>({
-    resolver: zodResolver(editArticleSchema)
+    resolver: zodResolver(editArticleSchema),
+    defaultValues: {
+      categories: article.articleCategory?.[0]?.categoryId ?? ''
+    }
   })
 
   const {
@@ -107,11 +111,18 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
       id="create-article-form"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex w-full items-center gap-4 lg:justify-between">
-        <h2 className="mt-4 w-full text-2xl !font-semibold">
-          Editar artigo existente
-        </h2>
-        <div className="flex w-full items-center justify-end">
+      <div className="mt-4 flex w-full items-center gap-4 border-b border-neutral-200 pb-8 lg:justify-between">
+        <article className="flex flex-col gap-2">
+          <h2 className="mt-2 flex w-full items-center gap-3 text-2xl !font-semibold">
+            <News />
+            Artigos criados
+          </h2>
+          <p className="text-sm !text-neutral-500">
+            Os artigos são postagens que podem ser descobertas e lidas pelos
+            usuários
+          </p>
+        </article>
+        <div className="flex w-full flex-1 items-center justify-end">
           <button
             className="action-admin-button !flex !items-center !gap-3"
             disabled={isSubmitting}
@@ -122,7 +133,7 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
           </button>
         </div>
       </div>
-      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse gap-4 lg:gap-6 xl:flex-row xl:gap-12">
+      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse gap-4 lg:gap-6 xl:flex-row xl:gap-8">
         <div className="w-full">
           <TextEditor onChange={setContent} value={content} />
         </div>

@@ -6,7 +6,7 @@ import { CreatedAuthors } from './components/CreatedAuthors'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Criar artigo',
+    title: 'IFSP News | Autores Cadastrados',
     description: '',
     image: '',
     url: '/autores'

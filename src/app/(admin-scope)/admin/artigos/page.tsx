@@ -7,7 +7,7 @@ import { CreatedArticles } from './components/CreatedArticles'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Criar artigo',
+    title: 'IFSP News | Artigos publicados',
     description: '',
     image: '',
     url: '/artigos'

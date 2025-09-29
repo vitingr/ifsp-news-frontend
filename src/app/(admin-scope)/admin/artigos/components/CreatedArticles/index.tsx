@@ -6,7 +6,6 @@ import type { FC } from 'react'
 
 import { Loading } from '@/components/common/Loading'
 import { useGetAllArticles } from '@/hooks/swr/useGetAllArticles'
-import { useUserSession } from '@/hooks/useUserSession'
 import { triggerCustomEvent } from '@/types/utils/customEvents/triggerCustomEvent'
 
 import { News } from '../icons/News'
@@ -17,8 +16,6 @@ import type { CreatedArticlesProps } from './types'
 
 export const CreatedArticles: FC<CreatedArticlesProps> = () => {
   const { articles, isLoading } = useGetAllArticles()
-
-  const session = useUserSession()
 
   return (
     <section className="w-full">
@@ -68,7 +65,7 @@ export const CreatedArticles: FC<CreatedArticlesProps> = () => {
                         {article.description}
                       </p>
                       <p className="mt-2 text-xs !text-neutral-400">
-                        Criado por {article?.author?.name || 'Getulio Games'}
+                        Criado por {article?.author?.name}
                       </p>
                     </article>
                     <div className="flex w-auto items-center gap-3 px-16">
@@ -78,7 +75,7 @@ export const CreatedArticles: FC<CreatedArticlesProps> = () => {
                       <figure className="h-9 w-9 rounded-full">
                         <Image
                           src={
-                            session?.user?.avatarUrl ||
+                            article.author?.avatarUrl ||
                             'https://plus.unsplash.com/premium_photo-1672201106204-58e9af7a2888?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhZGllbnQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww'
                           }
                           alt="profile image"
@@ -88,7 +85,7 @@ export const CreatedArticles: FC<CreatedArticlesProps> = () => {
                         />
                       </figure>
                     </div>
-                    <div className="flex w-auto items-center justify-end gap-4">
+                    <div className="relative z-[9999] flex w-auto items-center justify-end gap-4">
                       <button
                         aria-label="Edit Category"
                         className="flex cursor-pointer items-center justify-center rounded-md bg-neutral-200 p-2.5 transition-all duration-300 hover:brightness-105"

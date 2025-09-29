@@ -8,7 +8,7 @@ import { MostAccessedCategories } from './components/MostAccessedCategories'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Admin',
+    title: 'IFSP News | Painel do Admin',
     description: '',
     image: '',
     url: '/admin'

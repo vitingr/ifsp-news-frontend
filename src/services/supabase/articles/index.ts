@@ -57,7 +57,7 @@ export class Articles {
 
   deleteArticle = async ({ id, token }: DeleteArticlePayload) => {
     try {
-      return await apiPostgres.delete(`/articles/${id}`, {
+      return await apiPostgres.post(`/articles/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

@@ -126,7 +126,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
           </button>
         </div>
       </div>
-      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse gap-4 lg:gap-6 xl:flex-row xl:gap-12">
+      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse gap-4 lg:gap-6 xl:flex-row xl:gap-8">
         <div className="w-full">
           <TextEditor onChange={setContent} value={content} />
         </div>

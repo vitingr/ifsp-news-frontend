@@ -7,7 +7,7 @@ import { CreateArticleForm } from './components/Form'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Criar artigo',
+    title: 'IFSP News | Criar artigo',
     description: '',
     image: '',
     url: '/artigos/criar-artigo'

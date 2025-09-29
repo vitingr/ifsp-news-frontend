@@ -1,8 +1,12 @@
 import type { User } from './user'
 
 export interface Article {
+  articleCategory?: {
+    categoryId: string
+    articleId: string
+    id: string
+  }
   author?: User
-  categories?: string[]
   content: string
   createdAt: Date
   description?: string
