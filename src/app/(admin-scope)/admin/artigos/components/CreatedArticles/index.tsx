@@ -69,7 +69,7 @@ export const CreatedArticles: FC<CreatedArticlesProps> = () => {
           <>
             {filteredArticles?.length > 0 ? (
               <div className="flex w-full flex-col gap-4 rounded-sm border border-neutral-200 bg-white p-6">
-                {articles.map((article, index: number) => (
+                {filteredArticles.map((article, index: number) => (
                   <ArticleCard
                     article={article}
                     key={`${article.title}-${index}`}

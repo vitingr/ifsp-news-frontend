@@ -70,7 +70,7 @@ export const Createdcategories: FC<CreatedCategoriesProps> = () => {
           <>
             {filteredCategories?.length > 0 ? (
               <div className="flex w-full flex-col gap-2 rounded-sm border border-neutral-200 bg-white p-6">
-                {categories.map((category, index: number) => (
+                {filteredCategories.map((category, index: number) => (
                   <CategoryCard
                     category={category}
                     key={`${category.title}-${index}`}
