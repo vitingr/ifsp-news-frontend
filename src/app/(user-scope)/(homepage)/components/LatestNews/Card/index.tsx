@@ -25,7 +25,11 @@ export const Card: FC<CardProps> = async ({ copy }) => {
         <div className="flex w-full flex-col gap-2">
           <p className="text-sm">{copy.description}</p>
           <p className="text-sm !text-neutral-500">
-            {copy.createdAt.toString()}
+            {new Intl.DateTimeFormat('pt-BR', {
+              day: '2-digit',
+              month: 'long',
+              year: 'numeric'
+            }).format(new Date(copy.createdAt))}
           </p>
         </div>
       </article>

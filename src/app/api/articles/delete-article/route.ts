@@ -12,14 +12,14 @@ export const POST = async (req: NextRequest) => {
       token
     })
 
-    if (status !== 204) {
+    if (status !== 200) {
       return NextResponse.json(
         { message: data?.message || 'Cannot delete this Article.' },
         { status: 500 }
       )
     }
 
-    return NextResponse.json({ status: 204 })
+    return NextResponse.json({ status: 200 })
   } catch (err) {
     console.error({
       'POST/api/articles/delete-article': err.message

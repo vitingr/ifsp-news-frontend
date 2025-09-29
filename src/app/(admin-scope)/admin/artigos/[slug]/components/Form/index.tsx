@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { type FC, useState } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
@@ -27,6 +27,8 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
   article
 }) => {
   const user = useUserSession()
+
+  const router = useRouter()
 
   const [content, setContent] = useState<string>(article.content)
   const [isFeatured, setIsFeatured] = useState<boolean>(
@@ -76,7 +78,7 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
 
       reset()
       toast('O artigo foi atualizado com sucesso!')
-      redirect('/admin/artigos')
+      router.push('/admin/artigos')
     } catch (createArticleErr) {
       console.error(createArticleErr)
     }

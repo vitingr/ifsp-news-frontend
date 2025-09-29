@@ -6,12 +6,12 @@ import {
   Frame,
   GalleryVerticalEnd,
   Map,
-  PieChart,
-  Settings2,
-  SquareTerminal
+  PieChart
 } from 'lucide-react'
 import * as React from 'react'
 
+import { Admin } from '@/assets/common/Admin'
+import { Engine } from '@/assets/common/Engine'
 import { NavMain } from '@/components/nav-main'
 import { NavUser } from '@/components/nav-user'
 import { TeamSwitcher } from '@/components/team-switcher'
@@ -50,7 +50,7 @@ const data = {
     {
       title: 'Admin',
       url: '#',
-      icon: SquareTerminal,
+      icon: <Admin className="h-4 w-4 fill-neutral-700 text-neutral-700" />,
       isActive: true,
       items: [
         {
@@ -70,7 +70,7 @@ const data = {
     {
       title: 'Settings',
       url: '#',
-      icon: Settings2,
+      icon: <Engine className="h-4 w-4 fill-neutral-700 text-neutral-700" />,
       items: [
         {
           title: 'General',

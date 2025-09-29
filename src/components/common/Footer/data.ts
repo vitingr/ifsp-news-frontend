@@ -1,42 +1,42 @@
 export const FOOTER_LINKS = [
   {
-    title: 'Sobre a Plataforma',
+    title: 'Sobre o Blog',
     links: [
       {
-        label: 'O que fazemos',
+        label: 'Quem somos',
         href: '#'
       },
       {
-        label: 'Como funciona',
+        label: 'Objetivo do projeto',
         href: '#'
       },
       {
-        label: 'Nossos benefícios',
+        label: 'Como publicamos conteúdos',
         href: '#'
       },
       {
-        label: 'Depoimentos',
+        label: 'Equipe responsável',
         href: '#'
       },
       {
-        label: 'Entre em contato',
+        label: 'Contato com a redação',
         href: '#'
       }
     ]
   },
   {
-    title: 'Atendimento',
+    title: 'Ajuda e Suporte',
     links: [
       {
-        label: 'Fale conosco',
+        label: 'Fale com a equipe',
         href: '#'
       },
       {
-        label: 'Perguntas frequentes (FAQ)',
+        label: 'Dúvidas frequentes (FAQ)',
         href: '#'
       },
       {
-        label: 'Suporte técnico',
+        label: 'Relatar um problema',
         href: '#'
       },
       {
@@ -46,77 +46,77 @@ export const FOOTER_LINKS = [
     ]
   },
   {
-    title: 'Parcerias',
+    title: 'Comunidade IFSP',
     links: [
       {
-        label: 'Seja um parceiro',
+        label: 'Eventos do Campus',
         href: '#'
       },
       {
-        label: 'Mercados parceiros',
+        label: 'Projetos em destaque',
         href: '#'
       },
       {
-        label: 'Entregadores parceiros',
+        label: 'Grêmios e clubes',
         href: '#'
       },
       {
-        label: 'Benefícios para parceiros',
+        label: 'Editais e oportunidades',
         href: '#'
       },
       {
-        label: 'Histórias de sucesso',
+        label: 'Histórias de alunos',
         href: '#'
       }
     ]
   },
   {
-    title: 'Recursos',
+    title: 'Conteúdos',
     links: [
       {
-        label: 'Documentação da API',
-        href: 'https://api-documentation-link.com/'
-      },
-      {
-        label: 'Blog de atualizações',
+        label: 'Últimas publicações',
         href: '#'
       },
       {
-        label: 'Tutoriais e guias',
+        label: 'Notícias institucionais',
         href: '#'
       },
       {
-        label: 'Central de aprendizado',
+        label: 'Artigos e opiniões',
         href: '#'
       },
       {
-        label: 'Comunidade de suporte',
+        label: 'Guias para estudantes',
+        href: '#'
+      },
+      {
+        label: 'Boletins informativos',
         href: '#'
       }
     ]
   },
   {
-    title: 'Ferramentas',
+    title: 'Acesso rápido',
     links: [
       {
-        label: 'Calculadora de entregas',
+        label: 'Site oficial do IFSP Capivari',
+        href: 'https://cav.ifsp.edu.br/'
+      },
+      {
+        label: 'Sistema SUAP',
+        href: 'https://suap.ifsp.edu.br/'
+      },
+      {
+        label: 'Biblioteca',
+        href: 'https://biblioteca.ifsp.edu.br/'
+      },
+      {
+        label: 'Calendário acadêmico',
         href: '#'
       },
       {
-        label: 'Simulador de custos',
-        href: '#'
-      },
-      {
-        label: 'Painel do parceiro',
-        href: '#'
-      },
-      {
-        label: 'Gerenciamento de pedidos',
-        href: '#'
-      },
-      {
-        label: 'Rastreamento em tempo real',
-        href: '#'
+        label: 'Ouvidoria',
+        href: 'https://ouvidoria.ifsp.edu.br/'
       }
     ]
   }

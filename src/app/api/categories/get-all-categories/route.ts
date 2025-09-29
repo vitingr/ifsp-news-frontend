@@ -5,16 +5,16 @@ import { supabase } from '@/instances/supabase'
 
 export const GET = async (req: NextRequest) => {
   try {
-    const { data } = await supabase.authors.getAllAuthors({})
+    const { data } = await supabase.categories.getAllCategories({})
 
     return NextResponse.json(data, { status: 200 })
   } catch (err) {
     console.error({
-      'GET/api/auhtors/get-all-auhtors': err.message
+      'GET/api/categories/get-all-categories': err.message
     })
 
     return NextResponse.json(
-      { message: 'Error! Any author found' },
+      { message: 'Error! Any Category found' },
       { status: 500 }
     )
   }

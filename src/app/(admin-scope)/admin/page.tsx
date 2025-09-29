@@ -1,7 +1,10 @@
 import type { NextPage } from 'next'
 
-import { getUserSession } from '@/utils/auth/getUserSession'
 import { getMetaData } from '@/utils/seo/getMetaData'
+
+import { ArticlesDashboard } from './components/ArticlesDashboard'
+import { CitiesDashboard } from './components/CitiesDashboard'
+import { MostAccessedCategories } from './components/MostAccessedCategories'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -13,13 +16,17 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage = async () => {
-  const user = await getUserSession()
-
-  // if (user?.role === 'student' || !user?.role) {
-  //   redirect('/')
-  // }
-
-  return <main>testando - {JSON.stringify(user)}</main>
+  return (
+    <main>
+      <section className="flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">
+        <ArticlesDashboard />
+        <div className="flex h-auto w-full items-stretch gap-8">
+          <MostAccessedCategories />
+          <CitiesDashboard />
+        </div>
+      </section>
+    </main>
+  )
 }
 
 export default Page

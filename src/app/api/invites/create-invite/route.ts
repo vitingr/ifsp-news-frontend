@@ -20,7 +20,7 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    return NextResponse.json({ message: 'Invite created,' }, { status: 201 })
+    return NextResponse.json(data, { status: 201 })
   } catch (err) {
     console.error({
       'POST/api/invites/create-invite': err.message

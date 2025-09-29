@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
@@ -20,6 +20,8 @@ import type { EditCategoryFormProps } from './types'
 export const EditCategoryForm: FC<EditCategoryFormProps> = ({ category }) => {
   const user = useUserSession()
 
+  const router = useRouter()
+
   const formMethods = useForm<CreateCategoryInputs>({
     resolver: zodResolver(createCategorySchema)
   })
@@ -37,23 +39,24 @@ export const EditCategoryForm: FC<EditCategoryFormProps> = ({ category }) => {
     title
   }) => {
     try {
-      const { status } = await axios.post('/api/categories/create-category', {
+      const { status } = await axios.post('/api/categories/update-category', {
         payload: {
           description,
           slug,
           title
         },
-        token: user?.token
+        token: user?.token,
+        categoryId: category.id
       })
 
-      if (status !== 201) {
-        toast('Houve um erro ao publicar uma nova categoria.')
+      if (status !== 200) {
+        toast('Houve um erro ao editar a categoria.')
         return
       }
 
       reset()
-      toast('A categoria foi criada com sucesso!')
-      redirect('/admin/categorias')
+      toast('A categoria foi atualizada com sucesso!')
+      router.push('/admin/categorias')
     } catch (onSubmitErr) {
       console.error(onSubmitErr)
     } finally {
@@ -80,12 +83,12 @@ export const EditCategoryForm: FC<EditCategoryFormProps> = ({ category }) => {
         </article>
         <div className="flex w-full flex-1 items-center justify-end">
           <button
-            className="action-admin-button flex items-center gap-3"
+            className="action-admin-button !flex !items-center !gap-3"
             disabled={isSubmitting}
             type="submit"
           >
             <p className="text-center text-sm">Editar Categoria</p>
-            {isSubmitting ? <Spin className="!text-white" /> : null}
+            {isSubmitting ? <Spin variant="light" /> : null}
           </button>
         </div>
       </div>

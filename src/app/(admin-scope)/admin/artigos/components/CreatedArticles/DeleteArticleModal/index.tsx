@@ -6,11 +6,14 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 
 import { Modal } from '@/components/toolkit/Modal'
+import { useGetAllArticles } from '@/hooks/swr/useGetAllArticles'
 import { useEventListener } from '@/hooks/useEventListener'
 import { useUserSession } from '@/hooks/useUserSession'
 
 export const DeleteArticleModal: FC = () => {
   const user = useUserSession()
+
+  const { mutate } = useGetAllArticles()
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [articleId, setArticleId] = useState<string | null>(null)
@@ -37,13 +40,14 @@ export const DeleteArticleModal: FC = () => {
         token: user?.token
       })
 
-      if (status !== 204) {
+      if (status !== 200) {
         toast('Houve um erro ao deletar esse artigo.')
         return
       }
 
       setIsOpen(false)
-      toast('O artigo foi excluido com sucesso!')
+      toast.success('O artigo foi excluido com sucesso!')
+      await mutate()
     } catch (deleteArticleErr) {
       console.log(deleteArticleErr)
     }

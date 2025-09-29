@@ -6,8 +6,8 @@ import Silk from '@/components/Silk'
 
 export const Banner: FC = () => {
   return (
-    <section className="w-full px-4 py-12 lg:py-16 xl:px-0">
-      <div className="relative mx-auto flex h-[450px] w-full max-w-2xl items-center justify-center rounded-xl lg:max-w-7xl">
+    <section className="w-full bg-neutral-100 px-4 py-12 lg:py-16 xl:px-0">
+      <div className="relative mx-auto flex h-[280px] w-full max-w-2xl items-center justify-center rounded-xl lg:max-w-7xl">
         <figure className="silk-banner absolute z-30 h-full w-full rounded-xl">
           <Silk
             color="#7B7481"

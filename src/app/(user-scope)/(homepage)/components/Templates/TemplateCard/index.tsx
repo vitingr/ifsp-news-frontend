@@ -6,10 +6,10 @@ import type { TemplateCardProps } from './types'
 export const TemplateCard: FC<TemplateCardProps> = ({ copy }) => {
   return (
     <div className="flex w-full cursor-pointer flex-col items-center gap-4 overflow-hidden">
-      <figure className="h-auto max-h-[380px] w-full overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md">
+      <figure className="group h-auto max-h-[380px] w-full overflow-hidden rounded-xl transition-all duration-300 hover:shadow-md">
         <Image
           alt={copy.image.alt}
-          className="h-auto max-h-[380px] w-full rounded-xl object-cover"
+          className="h-auto max-h-[380px] w-full rounded-xl object-cover transition-all duration-300 group-hover:scale-[1.01]"
           height={1080}
           src={copy.image.src}
           width={1080}

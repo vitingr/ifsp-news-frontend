@@ -8,6 +8,7 @@ import { Banner } from './components/Banner'
 import { Header } from './components/Header'
 import { LatestNews } from './components/LatestNews'
 import { Templates } from './components/Templates'
+import { Others } from './components/Others'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -27,6 +28,7 @@ const Page: NextPage = async () => {
         <LatestNews />
         <Templates />
         <LatestNews />
+        <Others />
         <Banner />
       </main>
       <Footer />
