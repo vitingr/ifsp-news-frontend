@@ -76,12 +76,12 @@ export const EditArticleForm: FC<EditArticleFormProps> = ({
       })
 
       if (status !== 200) {
-        toast('Erro! Não foi possível alterar as informações do artigo')
+        toast.error('Erro! Não foi possível alterar as informações do artigo')
         return
       }
 
       reset()
-      toast('O artigo foi atualizado com sucesso!')
+      toast.success('O artigo foi atualizado com sucesso!')
       router.push('/admin/artigos')
     } catch (createArticleErr) {
       console.error(createArticleErr)

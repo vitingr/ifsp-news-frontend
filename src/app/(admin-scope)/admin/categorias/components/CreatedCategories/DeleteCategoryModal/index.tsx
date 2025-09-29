@@ -40,7 +40,7 @@ export const DeleteCategoryModal: FC = () => {
       )
 
       if (status !== 200) {
-        toast('Houve um erro ao deletar essa categoria.')
+        toast.error('Houve um erro ao deletar essa categoria.')
         return
       }
 

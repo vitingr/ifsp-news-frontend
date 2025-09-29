@@ -27,7 +27,6 @@ const Page: NextPage = async () => {
         <Header />
         <LatestNews />
         <Templates />
-        <LatestNews />
         <Others />
         <Banner />
       </main>

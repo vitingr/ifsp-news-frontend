@@ -30,15 +30,11 @@ export const ArticleContent: FC<ArticleContentProps> = ({ article }) => {
               <p className="text-sm !font-semibold">
                 {article?.author?.name || 'Autor do Artigo'}
               </p>
-              <p className="text-xs !text-neutral-500">16 artigos publicados</p>
+              <p className="text-xs !text-neutral-500">
+                Autor desde setembro de 2025
+              </p>
             </article>
           </div>
-          <p className="text-[15px] !text-neutral-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum id quam
-            magni velit vitae voluptatum, aut saepe libero distinctio. Nostrum
-            inventore dignissimos facere voluptatem ratione corporis earum nam
-            amet ut?
-          </p>
         </article>
       </div>
     </section>

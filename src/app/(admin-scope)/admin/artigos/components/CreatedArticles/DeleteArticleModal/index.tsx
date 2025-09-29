@@ -41,7 +41,7 @@ export const DeleteArticleModal: FC = () => {
       })
 
       if (status !== 200) {
-        toast('Houve um erro ao deletar esse artigo.')
+        toast.error('Houve um erro ao deletar esse artigo.')
         return
       }
 
@@ -66,7 +66,7 @@ export const DeleteArticleModal: FC = () => {
               irreversível...
             </p>
           </article>
-          <div className="flex w-full items-center gap-6">
+          <div className="mx-auto flex w-full items-center justify-center gap-6">
             <button
               className="action-admin-button"
               onClick={() => handleDeleteArticle()}

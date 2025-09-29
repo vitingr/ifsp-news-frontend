@@ -48,12 +48,12 @@ export const CreateCategoryForm: FC = () => {
       })
 
       if (status !== 201) {
-        toast('Houve um erro ao publicar uma nova categoria.')
+        toast.error('Houve um erro ao publicar uma nova categoria.')
         return
       }
 
       reset()
-      toast('A categoria foi criada com sucesso!')
+      toast.success('A categoria foi criada com sucesso!')
       router.push('/admin/categorias')
     } catch (onSubmitErr) {
       console.error(onSubmitErr)

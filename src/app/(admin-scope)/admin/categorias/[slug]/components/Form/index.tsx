@@ -50,12 +50,12 @@ export const EditCategoryForm: FC<EditCategoryFormProps> = ({ category }) => {
       })
 
       if (status !== 200) {
-        toast('Houve um erro ao editar a categoria.')
+        toast.error('Houve um erro ao editar a categoria.')
         return
       }
 
       reset()
-      toast('A categoria foi atualizada com sucesso!')
+      toast.success('A categoria foi atualizada com sucesso!')
       router.push('/admin/categorias')
     } catch (onSubmitErr) {
       console.error(onSubmitErr)

@@ -6,7 +6,7 @@ import { AcceptInvite } from './components/AcceptInvite'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Invites',
+    title: 'IFSP News | Invites',
     description: '',
     image: '',
     url: '/invites'

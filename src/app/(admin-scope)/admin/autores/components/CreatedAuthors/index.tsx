@@ -1,11 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import type { FC } from 'react'
+import { type FC, useMemo, useState } from 'react'
 
+import { GlassMagnifying } from '@/assets/common/GlassMagnifying'
 import { Loading } from '@/components/common/Loading'
 import { Button } from '@/components/toolkit/Button'
 import { useGetAllAuthors } from '@/hooks/swr/useGetAllAuthors'
+import { useDebounce } from '@/hooks/useDebounce'
 import { triggerCustomEvent } from '@/types/utils/customEvents/triggerCustomEvent'
 
 import { Details } from '../icons/Details'
@@ -15,15 +17,37 @@ import { NoResults } from './NoResults'
 export const CreatedAuthors: FC = () => {
   const { authors, isLoading } = useGetAllAuthors()
 
+  const [searchTerm, setSearchTerm] = useState<string>('')
+
+  const debouncedSearch = useDebounce(searchTerm, 300)
+
+  const filteredAuthors = useMemo(() => {
+    if (!authors) return []
+
+    const lowerSearch = debouncedSearch.toLowerCase()
+
+    return authors.filter(
+      article =>
+        article.name.toLowerCase().includes(lowerSearch) ||
+        article.email.toLowerCase().includes(lowerSearch)
+    )
+  }, [authors, debouncedSearch])
+
   return (
     <section className="w-full">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">
-        <div className="flex w-full items-center gap-4 lg:justify-between">
-          <h2 className="mt-2 flex w-full items-center gap-3 text-2xl !font-semibold">
-            <People className="h-6 w-6" />
-            Autores Disponíveis
-          </h2>
-          <div className="flex w-full items-center justify-end">
+        <div className="mt-4 flex w-full items-center gap-4 border-b border-neutral-200 pb-8 lg:justify-between">
+          <article className="flex flex-col gap-2">
+            <h2 className="mt-2 flex w-full items-center gap-3 text-2xl !font-semibold">
+              <People className="h-6 w-6" />
+              Autores Disponíveis
+            </h2>
+            <p className="text-sm !text-neutral-500">
+              Os autores são pessoas selecionadas que possuem a permissão de
+              adicionar postagens no website
+            </p>
+          </article>
+          <div className="flex w-full flex-1 items-center justify-end">
             <Button
               onClick={() =>
                 triggerCustomEvent({
@@ -40,9 +64,19 @@ export const CreatedAuthors: FC = () => {
             </Button>
           </div>
         </div>
+        <div className="flex w-full max-w-xs items-center rounded-sm border border-neutral-200 bg-white px-3 py-2">
+          <GlassMagnifying className="h-4 w-4 text-neutral-500" />
+          <input
+            className="w-full flex-1 bg-white px-2 text-sm text-neutral-500 outline-none placeholder:text-neutral-400"
+            onChange={e => setSearchTerm(e.target.value)}
+            placeholder="Buscar autores"
+            type="text"
+            value={searchTerm}
+          />
+        </div>
         {!isLoading ? (
           <>
-            {authors?.length > 0 ? (
+            {filteredAuthors?.length > 0 ? (
               <div className="flex w-full flex-col gap-6 rounded-sm border border-neutral-200 bg-white px-6 py-8">
                 {authors.map((author, index: number) => (
                   <div
