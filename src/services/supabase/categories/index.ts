@@ -43,7 +43,6 @@ export class Categories {
 
   createCategory = async ({ payload, token }: CreateCategoryPayload) => {
     try {
-      console.log(payload)
       return await apiPostgres.post('/categories', payload, {
         headers: {
           Authorization: `Bearer ${token}`

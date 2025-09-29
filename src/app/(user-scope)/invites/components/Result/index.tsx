@@ -28,7 +28,6 @@ export const Result: FC<ResultProps> = ({ invite }) => {
     const fetchInvite = async () => {
       try {
         setLoading(true)
-        console.log(invite)
 
         const { data, status } = await axios.get<User>(
           `/api/users/get-user-by-email?email=${invite.email}`

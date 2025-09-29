@@ -3,9 +3,17 @@ import { NextResponse } from 'next/server'
 
 import { supabase } from '@/instances/supabase'
 
-export const POST = async (req: NextRequest) => {
+export const DELETE = async (req: NextRequest) => {
   try {
-    const { articleId, token } = await req.json()
+    const articleId = req.nextUrl.searchParams.get('articleId')
+    const token = req.nextUrl.searchParams.get('token')
+
+    if (!articleId || !token) {
+      return NextResponse.json(
+        { message: 'Missing categoryId or token.' },
+        { status: 400 }
+      )
+    }
 
     const { status, data } = await supabase.articles.deleteArticle({
       id: articleId,

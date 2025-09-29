@@ -35,10 +35,9 @@ export const DeleteArticleModal: FC = () => {
 
   const handleDeleteArticle = async () => {
     try {
-      const { status } = await axios.post('/api/articles/delete-article', {
-        articleId,
-        token: user?.token
-      })
+      const { status } = await axios.delete(
+        `/api/articles/delete-article?articleId=${articleId}&token=${user?.token}`
+      )
 
       if (status !== 200) {
         toast.error('Houve um erro ao deletar esse artigo.')
