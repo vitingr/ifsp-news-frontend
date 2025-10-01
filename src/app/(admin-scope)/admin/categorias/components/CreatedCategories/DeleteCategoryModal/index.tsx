@@ -6,11 +6,14 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 
 import { Modal } from '@/components/toolkit/Modal'
+import { useGetAllCategories } from '@/hooks/swr/useGetAllCategories'
 import { useEventListener } from '@/hooks/useEventListener'
 import { useUserSession } from '@/hooks/useUserSession'
 
 export const DeleteCategoryModal: FC = () => {
   const user = useUserSession()
+
+  const { mutate } = useGetAllCategories()
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [categoryId, setCategoryId] = useState<string | null>(null)
@@ -32,18 +35,18 @@ export const DeleteCategoryModal: FC = () => {
 
   const handleDeleteCategory = async () => {
     try {
-      const { status } = await axios.post('/api/categories/delete-category', {
-        categoryId: categoryId,
-        token: user?.token
-      })
+      const { status } = await axios.delete(
+        `/api/categories/delete-category?categoryId=${categoryId}&token=${user?.token}`
+      )
 
-      if (status !== 204) {
-        toast('Houve um erro ao deletar essa categoria.')
+      if (status !== 200) {
+        toast.error('Houve um erro ao deletar essa categoria.')
         return
       }
 
       setIsOpen(false)
-      toast('A categoria foi excluida com sucesso!')
+      toast.success('A categoria foi excluida com sucesso!')
+      await mutate()
     } catch (deleteCategoryErr) {
       console.log(deleteCategoryErr)
     }

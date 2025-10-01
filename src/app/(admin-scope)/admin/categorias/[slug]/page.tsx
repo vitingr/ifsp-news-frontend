@@ -8,7 +8,7 @@ import type { CategoryDynamicPage } from './types'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Criar artigo',
+    title: 'IFSP News | Editar categoria',
     description: '',
     image: '',
     url: '/categorias/criar-categoria'

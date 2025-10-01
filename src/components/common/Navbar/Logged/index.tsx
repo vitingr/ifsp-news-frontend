@@ -1,5 +1,6 @@
 'use client'
 
+import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
@@ -19,6 +20,9 @@ export const Logged: FC = () => {
           Admin
         </Link>
       ) : null}
+      <button className="text-sm" onClick={() => signOut()}>
+        Sair
+      </button>
       <figure className="h-8 w-8 rounded-full">
         <Image
           src={

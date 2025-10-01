@@ -26,7 +26,6 @@ export const Button: React.FC<ButtonProps> = ({
   const spin = <Spin variant={spinShouldBeDark ? 'dark' : 'light'} />
 
   return createElement(
-    // @ts-expect-error disabled works as well.
     getButtonElementType({ ...props }),
     {
       className: buttonVariants({
@@ -37,6 +36,7 @@ export const Button: React.FC<ButtonProps> = ({
         className,
         isLoading
       }),
+      //@ts-ignore
       disabled: isLoading || disabled,
       ...props
     },

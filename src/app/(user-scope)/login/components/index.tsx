@@ -9,7 +9,6 @@ export const LoginForm: FC = () => {
     setIsLoadingSubmit(true)
 
     signIn('google').then(() => {
-      console.log('login realizado')
       setIsLoadingSubmit(false)
     })
   }

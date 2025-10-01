@@ -22,8 +22,8 @@ export const AuthModalWrapper: FC = () => {
       google: true
     }))
     signIn('google').then(() => {
-      toast('Login Realizado com sucesso!', {
-        description: 'Bem-vindo de volta à nossa plataforma de estudos 😁'
+      toast.success('Login Realizado com sucesso!', {
+        description: 'Bem-vindo ao IFSP News'
       })
     })
   }

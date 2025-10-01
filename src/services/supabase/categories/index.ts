@@ -43,7 +43,6 @@ export class Categories {
 
   createCategory = async ({ payload, token }: CreateCategoryPayload) => {
     try {
-      console.log(payload)
       return await apiPostgres.post('/categories', payload, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -58,11 +57,15 @@ export class Categories {
 
   deleteCategory = async ({ id, token }: DeleteCategoryPayload) => {
     try {
-      return await apiPostgres.delete(`/categories/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
+      return await apiPostgres.post(
+        `/categories/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
-      })
+      )
     } catch (error) {
       console.error({
         deleteCategoryErrorMessage: error.message

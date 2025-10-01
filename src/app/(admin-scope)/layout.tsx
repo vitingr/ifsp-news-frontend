@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import type { FC, PropsWithChildren } from 'react'
 
 import { AppSidebar } from '@/components/app-sidebar'
@@ -12,12 +13,19 @@ import {
   SidebarProvider,
   SidebarTrigger
 } from '@/components/ui/sidebar'
+import { getUserSession } from '@/utils/auth/getUserSession'
 import { Separator } from '@radix-ui/react-separator'
 
 import { DeleteArticleModal } from './admin/artigos/components/CreatedArticles/DeleteArticleModal'
 import { DeleteCategoryModal } from './admin/categorias/components/CreatedCategories/DeleteCategoryModal'
 
 const AdminLayout: FC<PropsWithChildren> = async ({ children }) => {
+  const user = await getUserSession()
+
+  if (!user) {
+    await redirect('/')
+  }
+
   return (
     <SidebarProvider>
       <AppSidebar />

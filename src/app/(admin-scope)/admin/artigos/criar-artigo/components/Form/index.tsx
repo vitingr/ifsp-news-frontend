@@ -1,6 +1,7 @@
 'use client'
 
 import axios from 'axios'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { type FC, useState } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
@@ -69,12 +70,12 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
       })
 
       if (status !== 201) {
-        toast('Houve um erro ao publicar um novo artigo.')
+        toast.error('Houve um erro ao publicar um novo artigo.')
         return
       }
 
       reset()
-      toast('O artigo foi publicado com sucesso!')
+      toast.success('O artigo foi publicado com sucesso!')
       router.push('/admin/artigos')
     } catch (createArticleErr) {
       console.error(createArticleErr)
@@ -126,7 +127,7 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
           </button>
         </div>
       </div>
-      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse gap-4 lg:gap-6 xl:flex-row xl:gap-12">
+      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse gap-4 lg:gap-6 xl:flex-row xl:gap-8">
         <div className="w-full">
           <TextEditor onChange={setContent} value={content} />
         </div>
@@ -134,18 +135,30 @@ export const CreateArticleForm: FC<CreateArticleFormProps> = ({
           <h2 className="hidden text-xl !font-semibold xl:block">
             Informações sobre o Artigo
           </h2>
-          <div className="mb-4 flex h-full max-h-[258px] flex-col items-center justify-center gap-4 border p-4">
-            <MediaIcon />
-            <UploadButton
-              uploadImageAction={async (path: string) =>
-                await handleUploadImage(path)
-              }
-              isLoading={isUploadLoading}
-              setImagePath={setArticleThumb}
-            >
-              <p className="cursor-pointer">Escolher imagem</p>
-            </UploadButton>
-          </div>
+          {articleThumb ? (
+            <figure className="mb-4 h-[258px] w-full rounded-sm">
+              <Image
+                alt="Article Imge"
+                className="h-[258px] w-full rounded-sm object-cover"
+                height={480}
+                src={articleThumb}
+                width={720}
+              />
+            </figure>
+          ) : (
+            <div className="mb-4 flex h-full max-h-[258px] flex-col items-center justify-center gap-4 border p-4">
+              <MediaIcon />
+              <UploadButton
+                uploadImageAction={async (path: string) =>
+                  await handleUploadImage(path)
+                }
+                isLoading={isUploadLoading}
+                setImagePath={setArticleThumb}
+              >
+                <p className="cursor-pointer">Escolher imagem</p>
+              </UploadButton>
+            </div>
+          )}
           <InputField
             id="title"
             label="Nome do artigo"

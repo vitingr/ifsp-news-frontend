@@ -293,21 +293,41 @@ function createStackedPlanesBufferGeometry(
   return geometry
 }
 
-const MergedPlanes = forwardRef(({ material, width, count, height }, ref) => {
-  const mesh = useRef(null)
-  useImperativeHandle(ref, () => mesh.current)
-  const geometry = useMemo(
-    () => createStackedPlanesBufferGeometry(count, width, height, 0, 100),
-    [count, width, height]
-  )
-  useFrame((_, delta) => {
-    mesh.current.material.uniforms.time.value += 0.1 * delta
-  })
-  return <mesh geometry={geometry} material={material} ref={mesh} />
-})
+type MergedPlanesProps = {
+  count: number
+  width: number
+  height: number
+  material: THREE.ShaderMaterial
+}
+
+//@ts-ignore
+const MergedPlanes = forwardRef<THREE.Mesh, MergedPlanesProps>(
+  ({ material, width, count, height }, ref) => {
+    const mesh = useRef<THREE.Mesh>(null)
+
+    useImperativeHandle(ref, () => mesh.current!)
+
+    const geometry = useMemo(
+      () => createStackedPlanesBufferGeometry(count, width, height, 0, 100),
+      [count, width, height]
+    )
+
+    useFrame((_, delta) => {
+      if (
+        mesh.current &&
+        mesh.current.material instanceof THREE.ShaderMaterial
+      ) {
+        mesh.current.material.uniforms.time.value += 0.1 * delta
+      }
+    })
+
+    return <mesh geometry={geometry} material={material} ref={mesh} />
+  }
+)
+
 MergedPlanes.displayName = 'MergedPlanes'
 
-const PlaneNoise = forwardRef((props, ref) => (
+const PlaneNoise = forwardRef<THREE.Mesh, MergedPlanesProps>((props, ref) => (
   <MergedPlanes
     count={props.count}
     height={props.height}

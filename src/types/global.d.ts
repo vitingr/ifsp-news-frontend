@@ -1,5 +1,7 @@
 import type { User as UserType } from '@/types/models/user'
 
+declare module '*.css'
+
 declare module 'next-auth' {
   interface Session extends DefaultSession {
     accessToken?: string

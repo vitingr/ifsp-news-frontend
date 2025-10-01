@@ -6,7 +6,7 @@ import { CreateCategoryForm } from './components/Form'
 
 export async function generateMetadata() {
   return getMetaData({
-    title: 'Criar artigo',
+    title: 'IFSP News | Criar categoria',
     description: '',
     image: '',
     url: '/categorias/criar-categoria'

@@ -6,11 +6,14 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 
 import { Modal } from '@/components/toolkit/Modal'
+import { useGetAllArticles } from '@/hooks/swr/useGetAllArticles'
 import { useEventListener } from '@/hooks/useEventListener'
 import { useUserSession } from '@/hooks/useUserSession'
 
 export const DeleteArticleModal: FC = () => {
   const user = useUserSession()
+
+  const { mutate } = useGetAllArticles()
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [articleId, setArticleId] = useState<string | null>(null)
@@ -32,18 +35,18 @@ export const DeleteArticleModal: FC = () => {
 
   const handleDeleteArticle = async () => {
     try {
-      const { status } = await axios.post('/api/articles/delete-article', {
-        articleId,
-        token: user?.token
-      })
+      const { status } = await axios.delete(
+        `/api/articles/delete-article?articleId=${articleId}&token=${user?.token}`
+      )
 
-      if (status !== 204) {
-        toast('Houve um erro ao deletar esse artigo.')
+      if (status !== 200) {
+        toast.error('Houve um erro ao deletar esse artigo.')
         return
       }
 
       setIsOpen(false)
-      toast('O artigo foi excluido com sucesso!')
+      toast.success('O artigo foi excluido com sucesso!')
+      await mutate()
     } catch (deleteArticleErr) {
       console.log(deleteArticleErr)
     }
@@ -62,7 +65,7 @@ export const DeleteArticleModal: FC = () => {
               irreversível...
             </p>
           </article>
-          <div className="flex w-full items-center gap-6">
+          <div className="mx-auto flex w-full items-center justify-center gap-6">
             <button
               className="action-admin-button"
               onClick={() => handleDeleteArticle()}

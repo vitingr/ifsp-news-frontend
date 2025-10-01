@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog IFSP Capivari - Frontend
 
-## Getting Started
+Este é o frontend do projeto **Blog IFSP Capivari**, desenvolvido com **Next.js** e **TypeScript**. O blog tem como objetivo permitir a publicação e leitura de artigos pela comunidade acadêmica, com um painel administrativo completo para gerenciar conteúdos e usuários.
 
-First, run the development server:
+## Tecnologias utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Next.js](https://nextjs.org/) – Framework React com renderização SSR/SSG
+- [TypeScript](https://www.typescriptlang.org/) – Tipagem estática para maior segurança
+- [NextAuth.js](https://next-auth.js.org/) – Autenticação e gerenciamento de sessões
+- [shadcn/ui](https://ui.shadcn.com/) – Biblioteca de componentes acessíveis e estilizados com Tailwind CSS
+- [Tailwind CSS](https://tailwindcss.com/) – Utilitários CSS para estilização
+- [Resend](https://resend.com/) – Envio de e-mails de convite (invites)
+- [SWR](https://swr.vercel.app/) – Fetching de dados reativo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura de páginas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Página inicial (Home)
+- Exibe a lista de artigos públicos
+- Cada artigo leva à sua página individual de leitura
+- Visual limpo e acessível
 
-## Learn More
+### Página de Login
+- Login via e-mail/senha (implementado com NextAuth)
+- Redirecionamento automático para o painel admin após login
 
-To learn more about Next.js, take a look at the following resources:
+### Admin
+- Acesso restrito a usuários autenticados (autores ou administradores)
+- CRUD completo de artigos
+- Upload de imagens
+- Visualização de autor e categorias
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Sistema de convites
+- Administradores podem enviar convites por e-mail
+- Os convidados recebem um link com token para se cadastrar como autores
+- Integração com a **Resend API** para envio de e-mails
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---

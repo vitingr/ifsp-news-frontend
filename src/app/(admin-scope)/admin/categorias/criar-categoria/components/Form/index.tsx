@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
@@ -18,6 +18,8 @@ import { createCategorySchema } from './schemas'
 
 export const CreateCategoryForm: FC = () => {
   const user = useUserSession()
+
+  const router = useRouter()
 
   const formMethods = useForm<CreateCategoryInputs>({
     resolver: zodResolver(createCategorySchema)
@@ -46,13 +48,13 @@ export const CreateCategoryForm: FC = () => {
       })
 
       if (status !== 201) {
-        toast('Houve um erro ao publicar uma nova categoria.')
+        toast.error('Houve um erro ao publicar uma nova categoria.')
         return
       }
 
       reset()
-      toast('A categoria foi criada com sucesso!')
-      redirect('/admin/categorias')
+      toast.success('A categoria foi criada com sucesso!')
+      router.push('/admin/categorias')
     } catch (onSubmitErr) {
       console.error(onSubmitErr)
     } finally {
@@ -79,7 +81,7 @@ export const CreateCategoryForm: FC = () => {
         </article>
         <div className="flex w-full flex-1 items-center justify-end">
           <button
-            className="action-admin-button flex items-center gap-3"
+            className="action-admin-button !flex !items-center !gap-3"
             disabled={isSubmitting}
             type="submit"
           >

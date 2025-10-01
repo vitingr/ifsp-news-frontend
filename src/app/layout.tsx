@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/sonner'
 import NextAuthProvider from '@/context/NextAuthProvider'
 import { authOptions } from '@/lib/auth'
 
-//@ts-expect-error
+//@ts-ignore
 import '@/styles/globals.css'
 
 export default async function RootLayout({
@@ -18,7 +18,7 @@ export default async function RootLayout({
 
   return (
     <html lang="pt">
-      <body className="overflow-x-hidden">
+      <body className="overflow-x-hidden text-neutral-700">
         <NextAuthProvider session={session}>
           {children}
           <AuthModal />

@@ -5,6 +5,8 @@ import { Facebook } from '@/assets/brands/Facebook'
 import { LinkedIn } from '@/assets/brands/LinkedIn'
 import { WhatsApp } from '@/assets/brands/WhatsApp'
 import { Breadcrumb } from '@/components/common/Breadcrumb'
+import { BASE_URL } from '@/constants/environments/baseUrl'
+import { createShareLink } from '@/utils/helpers/createShareLink'
 
 import type { ArticleHeaderProps } from './types'
 
@@ -22,9 +24,27 @@ export const ArticleHeader: FC<ArticleHeaderProps> = ({ article }) => {
         </h1>
         <p className="text-lg">{article.description}</p>
         <div className="flex items-center gap-3">
-          <Facebook className="h-4 w-4 cursor-pointer transition-all duration-300 hover:brightness-105" />
-          <WhatsApp className="h-5 w-5 cursor-pointer transition-all duration-300 hover:brightness-105" />
-          <LinkedIn className="h-6 w-6 cursor-pointer transition-all duration-300 hover:brightness-105" />
+          <a
+            href={`${createShareLink('facebook')}${encodeURIComponent(`${BASE_URL}/artigos/${article.slug}`)}`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Facebook className="h-4 w-4 cursor-pointer transition-all duration-300 hover:text-emerald-600" />
+          </a>
+          <a
+            href={`${createShareLink('whatsapp')}${encodeURIComponent(`${BASE_URL}/artigos/${article.slug}`)}`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <WhatsApp className="h-5 w-5 cursor-pointer transition-all duration-300 hover:text-emerald-600" />
+          </a>
+          <a
+            href={`${createShareLink('linkedin')}${encodeURIComponent(`${BASE_URL}/artigos/${article.slug}`)}`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <LinkedIn className="h-6 w-6 cursor-pointer transition-all duration-300 hover:text-emerald-600" />
+          </a>
         </div>
         <figure className="group mt-4 w-full overflow-hidden rounded-sm">
           <Image

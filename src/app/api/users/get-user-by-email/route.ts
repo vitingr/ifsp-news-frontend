@@ -9,8 +9,6 @@ export const GET = async (req: NextRequest) => {
 
     const email = url.searchParams.get('email')
 
-    console.log(email)
-
     const { data } = await supabase.users.getUserByEmail({
       email
     })

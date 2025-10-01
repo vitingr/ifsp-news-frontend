@@ -45,13 +45,13 @@ export const InviteAuthor = () => {
       })
 
       if (status !== 201) {
-        toast('Houve um erro ao convidar um novo autor.')
+        toast.error('Houve um erro ao convidar um novo autor.')
         return
       }
 
       reset()
       toast.success('O convite foi enviado com sucesso!')
-      setInviteToken(data.token)
+      setInviteToken(data.invite.token)
     } catch (inviteAuthorErr) {
       console.log(inviteAuthorErr)
     }
@@ -72,14 +72,14 @@ export const InviteAuthor = () => {
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(
-      `${BASE_URL}/invites?inviteToken${inviteToken}`
+      `${BASE_URL}/invites?inviteToken=${inviteToken}`
     )
   }
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       {isSubmitSuccessful && inviteToken !== '' ? (
-        <div className="flex w-full max-w-md min-w-[448px] flex-col gap-8 rounded-sm bg-white px-8 py-16">
+        <div className="flex w-full max-w-xl min-w-[448px] flex-col gap-8 rounded-sm bg-white px-8 py-16">
           <h2 className="w-full text-left text-2xl !font-bold">
             Adicionar autor
           </h2>

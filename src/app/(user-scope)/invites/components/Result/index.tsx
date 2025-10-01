@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { type FC, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
+import { Loading } from '@/components/common/Loading'
 import { Button } from '@/components/toolkit/Button'
 import { useUserSession } from '@/hooks/useUserSession'
 import type { User } from '@/types/models/user'
@@ -27,7 +28,6 @@ export const Result: FC<ResultProps> = ({ invite }) => {
     const fetchInvite = async () => {
       try {
         setLoading(true)
-        console.log(invite)
 
         const { data, status } = await axios.get<User>(
           `/api/users/get-user-by-email?email=${invite.email}`
@@ -35,6 +35,7 @@ export const Result: FC<ResultProps> = ({ invite }) => {
 
         if (status === 200) {
           setUser(data)
+          setLoading(false)
         }
       } catch (err: any) {
         console.log('Failed to fetch invite', err)
@@ -125,6 +126,8 @@ export const Result: FC<ResultProps> = ({ invite }) => {
       {error}
     </div>
   ) : (
-    <div>carregando...</div>
+    <div className="justfiy-center mx-auto flex items-center">
+      <Loading />
+    </div>
   )
 }
