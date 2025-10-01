@@ -84,6 +84,7 @@ export const Header: FC = () => {
               label="Email"
               placeholder="Insira seu email"
               variant="secondary"
+              disabled
               required
             />
             <InputField
@@ -91,6 +92,7 @@ export const Header: FC = () => {
               label="Senha"
               type="password"
               variant="secondary"
+              disabled
               required
             />
             <Button
